@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+header {
+    background: lavender;
+    color: black;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+footer {
+	background: lightgray;
+	color: dimgray;
+	text-align: center;
+	padding: 6px 0;
+    font-size: 12px;
+}
+
+p {
+    margin: 0;
+}
+
+.footer p {
+    margin: 0 0;
+}
