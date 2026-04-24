@@ -5,6 +5,8 @@
 </head>
 
 <body>
+	<%@ include file="/common/header.jsp" %>
+
 	<div class="login-content">
 	    <h2>ログイン</h2>
 	
@@ -63,5 +65,6 @@
 	        }
 	    }
 	</script>
+	<%@ include file="/common/footer.jsp" %>
 </body>
 </html>

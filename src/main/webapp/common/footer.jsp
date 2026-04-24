@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <footer>
-	<p>&copy; 2023 TIC</p>
+	<p>&copy; 2025 TIC</p>
 	<p>大原学園</p>
 </footer>
 </html>
