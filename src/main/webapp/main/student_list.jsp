@@ -16,7 +16,7 @@
     <div class="main">
 		<h2>学生管理</h2>
 		<a href="">新規登録</a>
-		<form action="StudentSearch" method="get" class="search-box">
+		<form action="" method="get" class="search-box">
 		    <div class="">
 		        <label>入学年度</label>
 		        <select name="">
@@ -24,7 +24,6 @@
 		        </select>
 		    </div>
 		
-		    <!-- クラス -->
 		    <div class="">
 		        <label>クラス</label>
 		        <select name="">
@@ -33,12 +32,10 @@
 		    </div>
 		    <div class="">
 		        <label>
-		            <input type="checkbox" name="" value="1">
-		            在学中
+		            <input type="checkbox" name="" value="1">在学中
 		        </label>
 		    </div>
 		
-		    <!-- ボタン -->
 		    <div class="">
 		        <button type="submit">絞込み</button>
 		    </div>
