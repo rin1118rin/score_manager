@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
 <%@ include file="/common/header.jsp" %>
@@ -44,32 +43,29 @@
 			<c:when test="${empty list}">
 		        <p>学生情報が存在しませんでした</p>
 		    </c:when>
-			    <c:otherwise>
-			        <p>検索結果：${list.size()}件</p>
-		
-			        <table border="1">
-			            <tr>
-			            		<th>入学年度</th>
-			                <th>学生番号</th>
-			                <th>氏名</th>
-			                <th>クラス</th>
-			                <th>在学中</th>
-			            </tr>
-			            <c:forEach var="s" items="${list}">
-							<tr>
-						   		<td>${s.entYear}</td>
-			                		<td>${s.no}</td>
-			                 	<td>${s.name}</td>
-			                 	<td>${s.classNum}</td>
-			                 	<td>${s.isAttend ? '○' : ''}</td>
-			                 	<td><a href="">変更</a></td>
-			              	</tr>
-			            </c:forEach>
-			        </table>
-			
-			    </c:otherwise>
-			
-			</c:choose>
+			<c:otherwise>
+		        <p>検索結果：${list.size()}件</p>
+			    <table>
+			       <tr>
+		            		<th>入学年度</th>
+		                <th>学生番号</th>
+		                <th>氏名</th>
+		                <th>クラス</th>
+		                <th>在学中</th>
+		            </tr>
+					<c:forEach var="s" items="${list}">
+						<tr>
+					   		<td>${s.entYear}</td>
+		                		<td>${s.no}</td>
+		                 	<td>${s.name}</td>
+		                 	<td>${s.classNum}</td>
+		                 	<td>${s.isAttend ? '○' : ''}</td>
+		                 	<td><a href="">変更</a></td>
+		              	</tr>
+		            </c:forEach>
+		        </table>	
+			</c:otherwise>
+		</c:choose>
     </div>
 </div>
 
