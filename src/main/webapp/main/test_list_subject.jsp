@@ -14,7 +14,7 @@
 	    <%@ include file="/common/sidebar.jsp" %>
 	
 	    <div class="main">
-	    		<h2>成績参照</h2>
+	    		<h2>成績一覧（科目）</h2>
 	    		<form action="" method="get">
 	    			<p>科目情報</p>
 	    			<div>
@@ -48,27 +48,34 @@
 	    			<button type="submit">検索</button>
 	    			<input type="hidden" name="f" value="st">
 	    		</form>
-	    		<div>科目:${param.f3}</div>
-	    		<table>
-	    			<tr>
-	    				<th>入学年度</th>
-	    				<th>クラス</th>
-	    				<th>学生番号</th>
-	    				<th>氏名</th>
-	    				<th>1回</th>
-	    				<th>2回</th>
-	    			</tr>
-	    			<c:forEach var="s" items="${list}">
-	    				<tr>
-	    					<td>${s.entYear}</td>
-	    					<td>${s.classNum}</td>
-	    					<td>${s.no}</td>
-	    					<td>${s.name}</td>
-<%--	    					<td>${}</td>   1回 --%>
-<%--	    					<td>${}</td>   2回 --%>
-	    				</tr>
-	    			</c:forEach>
-	    		</table>
+	    		<c:choose>
+	    			<c:when test="${empty list}">
+	    				<div>学生情報が存在しませんでした</div>
+	    			</c:when>
+	    			<c:otherwise>
+	    				<div>科目:${param.f3}</div>
+			    		<table>
+			    			<tr>
+			    				<th>入学年度</th>
+			    				<th>クラス</th>
+			    				<th>学生番号</th>
+			    				<th>氏名</th>
+			    				<th>1回</th>
+			    				<th>2回</th>
+			    			</tr>
+			    			<c:forEach var="s" items="${list}">
+			    				<tr>
+			    					<td>${s.entYear}</td>
+			    					<td>${s.classNum}</td>
+			    					<td>${s.no}</td>
+			    					<td>${s.name}</td>
+		<%--	    					<td>${}</td>   1回 --%>
+		<%--	    					<td>${}</td>   2回 --%>
+			    				</tr>
+			    			</c:forEach>
+			    		</table>
+	    			</c:otherwise>
+	    		</c:choose>
 	    </div>
 	</div>
 	
