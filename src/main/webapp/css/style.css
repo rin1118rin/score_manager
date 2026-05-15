@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 header {
-    background: lavender;
+    background: lightblue;
     color: black;
     padding: 15px 20px;
     display: flex;
@@ -34,3 +34,22 @@ p {
 .footer p {
     margin: 0 0;
 }
+
+.login-content {
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.login-content input[type="text"],
+.login-content input[type="password"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+
