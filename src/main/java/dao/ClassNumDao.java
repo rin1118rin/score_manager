@@ -100,9 +100,81 @@ public class ClassNumDao extends Dao {
 	
 	public boolean save(ClassNum classNum) throws Exception {
 		
+		Connection connection = getConnection();
+		
+		PreparedStatement statement = null;
+		
+		int count = 0;
+		
+		try {
+			statement = connection.prepareStatement("insert into class_num(class_num, school_cd) values(?, ?)");
+			
+			statement.setString(1, classNum.getClass_num());
+			
+			statement.setString(2, classNum.getSchool().getCd());
+			
+			count = statement.executeUpdate();
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+			
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+		}
+		
+		return count > 0;
 	}
 	
 	public boolean save(ClassNum classNum, String newClassNum) throws Exception {
 		
+		Connection connection = getConnection();
+		
+		PreparedStatement statement = null;
+		
+		int count = 0;
+		
+		try {
+			statement = connection.prepareStatement("update class_num set class_num = ? where class_num = ? and school_cd = ?");
+			
+			statement.setString(1, newClassNum);
+			
+			statement.setString(2, classNum.getClass_num());
+			
+			statement.setString(3, classNum.getSchool().getCd());
+			
+			count = statement.executeUpdate();
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+			
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+		}
+		
+		return count > 0;
 	}
 }
