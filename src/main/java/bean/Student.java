@@ -28,7 +28,7 @@ public class Student implements Serializable {
 		return name;
 	}
 	
-	public void getName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 	
@@ -50,6 +50,10 @@ public class Student implements Serializable {
 	
 	public boolean isAttend() {
 		return isAttend;
+	}
+	
+	public void setisAttend(boolean isAttend) {
+		this.isAttend = isAttend;
 	}
 	
 	public School getSchool() {

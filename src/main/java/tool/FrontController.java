@@ -9,17 +9,32 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/FrontController")// .actionで終わるURLをこのサーブレットで処理
+@WebServlet(urlPatterns = { "*.action"})// .actionで終わるURLをこのサーブレットで処理
 public class FrontController extends HttpServlet {
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		try {
+			
+			String path = req.getServletPath().substring(1);
+			
+			String name = path.replace(".a", "A").replace("/", ".");
+			
+			System.out.println("★ servlet path ー＞" + req.getServletPath());
+			System.out.println("★ class name ー＞" + name);
+			
+			Action action = (Action) Class.forName(name).getDeclaredConstructor().newInstance();
+			
+			action.execute(req, res);
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.getRequestDispatcher("/error.jsp").forward(req, res);
+		}
 	}
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
-		doGet(request, response);
+		doGet(req, res);
+		
 	}
 	
 }
