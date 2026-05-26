@@ -9,7 +9,7 @@
 	<h1>得点管理システム</h1>
 	<nav>
 		<c:if test="${not empty loginUserName}">
-			<span>${loginUserName}</span>様
+			<span>${user.name}</span>様
 			<a href="">ログアウト</a>
 		</c:if>
 	</nav>

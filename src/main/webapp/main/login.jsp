@@ -10,7 +10,7 @@
 	<div class="login-content">
 	    <h2>ログイン</h2>
 	
-	    <form action="login" method="POST">
+	    <form action="LoginExecute.action" method="POST">
 	        <div class="form-group">
 	            <label for="id">ＩＤ</label>
 	            <input type="text" 
