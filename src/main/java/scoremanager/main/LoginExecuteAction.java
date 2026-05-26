@@ -10,7 +10,7 @@ import tool.Action;
 
 public class LoginExecuteAction extends Action {
 
-    public String execute(HttpServletRequest req,HttpServletResponse res) throws Exception {
+    public void execute(HttpServletRequest req,HttpServletResponse res) throws Exception {
 
         HttpSession session = req.getSession();
 
@@ -24,14 +24,12 @@ public class LoginExecuteAction extends Action {
         if (teacher != null) {
 
             session.setAttribute("teacher", teacher);
-            
+
             req.getRequestDispatcher("menu.jsp").forward(req, res);
 
-            return null;
+            return;
         }
-        	
+
         req.getRequestDispatcher("error.jsp").forward(req, res);
-        
-        return null;
     }
 }
