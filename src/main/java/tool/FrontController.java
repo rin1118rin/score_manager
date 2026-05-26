@@ -1,5 +1,5 @@
 package tool;
-
+ 
 import java.io.IOException;
 
 import jakarta.servlet.ServletException;
@@ -7,34 +7,45 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-
-@WebServlet(urlPatterns = { "*.action"})// .actionで終わるURLをこのサーブレットで処理
+ 
+@WebServlet(urlPatterns = {"*.action"})
 public class FrontController extends HttpServlet {
-	
-	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		try {
-			
-			String path = req.getServletPath().substring(1);
-			
-			String name = path.replace(".a", "A").replace("/", ".");
-			
-			System.out.println("★ servlet path ー＞" + req.getServletPath());
-			System.out.println("★ class name ー＞" + name);
-			
-			Action action = (Action) Class.forName(name).getDeclaredConstructor().newInstance();
-			
-			action.execute(req, res);
-		} catch (Exception e) {
-			e.printStackTrace();
-			req.getRequestDispatcher("/error.jsp").forward(req, res);
-		}
-	}
-	
-	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		
-		doGet(req, res);
-		
-	}
-	
+ 
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+ 
+        try {
+            // 例: /StudentList.action → StudentList
+            String path = request.getServletPath().substring(1);
+            String base = path.replace(".action", "");
+ 
+            // パッケージ名 + クラス名
+            String className;
+            if (base.equals("Login") || base.equals("LoginExecute")) {
+            	className = "scoremanager." + base + "Action";
+            } else {
+            	className = "scoremanager.main." + base + "Action";
+            }
+ 
+ 
+            System.out.println("★ servlet path -> " + request.getServletPath());
+            System.out.println("★ class name -> " + className);
+ 
+            Class<?> type = Class.forName(className);
+            Action action = (Action) type.getDeclaredConstructor().newInstance();
+ 
+            action.execute(request, response);
+ 
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.getRequestDispatcher("/error.jsp").forward(request, response);
+        }
+    }
+ 
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doGet(request, response);
+    }
 }

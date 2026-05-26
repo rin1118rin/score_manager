@@ -16,7 +16,7 @@ import dao.ClassNumDao;
 import dao.StudentDao;
 import tool.Action;
 
-public class StudentListAction extends Action{
+public class StudentListAction extends Action {
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -71,9 +71,9 @@ public class StudentListAction extends Action{
 		}
 		request.setAttribute("students", students);
 		request.setAttribute("class_num_set", list);
-		request.setAttribute("ent_year_set", entYearStr);
+		request.setAttribute("ent_year_set", entYearSet);
 		
-		request.getRequestDispatcher("student_list.jsp").forward(request, response);
+		request.getRequestDispatcher("/main/student_list.jsp").forward(request, response);
 	}
 	
 }

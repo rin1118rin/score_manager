@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+<!-- 上記はEclipseの警告を消すための記述です。 -->
+ 
+<Context reloadable="true">
+<!--	<Resource-->
+<!--		name="jdbc/student"-->
+<!--		auth="Container"-->
+<!--		type="javax.sql.DataSource"-->
+<!--		driverClassName="org.postgresql.Driver"-->
+<!--		url="jdbc:postgresql://localhost:5432/student"-->
+<!--		username="postgres"-->
+<!--		password="password"-->
+<!--	/>-->
+	<Resource
+	    name="jdbc/score"
+	    auth="Container"
+	    type="javax.sql.DataSource"
+	    driverClassName="org.h2.Driver"
+	    url="jdbc:h2:~/score;AUTO_SERVER=TRUE"
+	    username="sa"
+	    password=""
+	/>
+	
+</Context>
