@@ -1,4 +1,4 @@
-package scoremanager.main;
+package main;
 
 public class TestListAction {
 

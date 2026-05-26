@@ -10,13 +10,13 @@
 	<div class="login-content">
 	    <h2>ログイン</h2>
 	
-	    <form action="LoginExecute.action" method="POST">
+	    <form action="LoginExecute.action" method="post">
 	        <div class="form-group">
 	            <label for="id">ＩＤ</label>
 	            <input type="text" 
 	                   name="id" 
 	                   id="id" 
-	                   value="${id}" 
+	                   value="${param.id}" 
 	                   placeholder="半角でご入力ください" 
 	                   maxlength="10" 
 	                   required 
@@ -38,7 +38,6 @@
 	
 	        <div class="form-group checkbox-group">
 	            <input type="checkbox" 
-	                   name="chk_d_ps" 
 	                   id="chk_d_ps" 
 	                   onclick="togglePasswordVisibility()">
 	            <label for="chk_d_ps">パスワードを表示</label>
@@ -46,7 +45,6 @@
 	
 	        <div class="form-group action-group">
 	            <input type="submit" 
-	                   name="login" 
 	                   value="ログイン">
 	        </div>
 	

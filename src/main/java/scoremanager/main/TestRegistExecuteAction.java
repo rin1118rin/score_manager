@@ -1,4 +1,4 @@
-package scoremanager.main;
+package main;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
