@@ -8,6 +8,8 @@ import bean.Subject;
 public class SubjectDao extends Dao {
 	public Subject get(String cd,School school) throws Exception {
 		
+		Subject subjecct = new Subject();
+		
 	}
 	
 	public List<Subject> filter(School school) throws Exception {
