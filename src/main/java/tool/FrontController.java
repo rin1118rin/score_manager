@@ -18,14 +18,14 @@ public class FrontController extends HttpServlet {
         try {
             // 例: /StudentList.action → StudentList
             String path = request.getServletPath().substring(1);
-            String base = path.replace(".action", "");
+            String base = path.replace(".action", "").replace("/", ".");
  
             // パッケージ名 + クラス名
             String className;
             if (base.equals("Login") || base.equals("LoginExecute")) {
             	className = "scoremanager." + base + "Action";
             } else {
-            	className = "scoremanager.main." + base + "Action";
+            	className = "scoremanager." + base + "Action";
             }
  
  
