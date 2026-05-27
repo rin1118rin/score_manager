@@ -1,10 +1,12 @@
-package main;
+package scoremanager.main;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class LogoutAction {
-	public void execute(HttpServletRequest req,HttpServletResponse res) {
-		
+import tool.Action;
+
+public class LogoutAction extends Action {
+	public void execute(HttpServletRequest req,HttpServletResponse res) throws Exception {
+		req.getRequestDispatcher("logout.jsp").forward(req, res);
 	}
 }

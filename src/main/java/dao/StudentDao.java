@@ -36,7 +36,7 @@ public class StudentDao extends Dao {
 				student.setName(rSet.getString("name"));
 				student.setEntYear(rSet.getInt("ent_year"));
 				student.setClassNum(rSet.getString("class_num"));
-				student.setisAttend(rSet.getBoolean("is_attend"));
+				student.setAttend(rSet.getBoolean("is_attend"));
 				
 				student.setSchool(schoolDao.get(rSet.getString("school_cd")));
 				
@@ -79,7 +79,7 @@ public class StudentDao extends Dao {
 				student.setName(rSet.getString("name"));
 				student.setEntYear(rSet.getInt("ent_year"));
 				student.setClassNum(rSet.getString("class_num"));
-				student.setisAttend(rSet.getBoolean("is_attend"));
+				student.setAttend(rSet.getBoolean("is_attend"));
 				student.setSchool(school);
 				
 				list.add(student);
@@ -103,7 +103,7 @@ public class StudentDao extends Dao {
 		
 		String condition = "and ent_year=? and class_num=?";
 		
-		String order = "order by no asc";
+		String order = " order by no asc";
 		
 		String conditionIsAttend = "";
 		
@@ -210,9 +210,7 @@ public class StudentDao extends Dao {
 		
 		ResultSet rSet = null;
 		
-		String condition = "and ent_year=?";
-		
-		String order = "order by no asc";
+		String order = " order by no asc";
 		
 		String conditionIsAttend = "";
 		
@@ -221,7 +219,7 @@ public class StudentDao extends Dao {
 		}
 		
 		try {
-			statement = connection.prepareStatement(baseSql + condition + conditionIsAttend + order);
+			statement = connection.prepareStatement(baseSql + conditionIsAttend + order);
 			
 			statement.setString(1, school.getCd());
 			

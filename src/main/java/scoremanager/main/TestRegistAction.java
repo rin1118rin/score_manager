@@ -1,10 +1,12 @@
-package main;
+package scoremanager.main;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class TestRegistAction {
-	public void execute(HttpServletRequest req,HttpServletResponse res) {
+import tool.Action;
+
+public class TestRegistAction extends Action {
+	public void execute(HttpServletRequest req,HttpServletResponse res) throws Exception {
 		
 	}
 }

@@ -66,7 +66,7 @@ public class ClassNumDao extends Dao {
 		PreparedStatement statement = null;
 		
 		try { 
-			statement = connection.prepareStatement("select * class_num from class_num where school_cd = ? order by class_num");
+			statement = connection.prepareStatement("select * from class_num where school_cd = ? order by class_num");
 			
 			statement.setString(1, school.getCd());
 			

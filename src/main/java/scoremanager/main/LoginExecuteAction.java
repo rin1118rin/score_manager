@@ -23,13 +23,13 @@ public class LoginExecuteAction extends Action {
 
         if (teacher != null) {
 
-            session.setAttribute("teacher", teacher);
+            session.setAttribute("user", teacher);
 
-            req.getRequestDispatcher("menu.jsp").forward(req, res);
+            req.getRequestDispatcher("/main/menu.jsp").forward(req, res);
 
             return;
         }
 
-        req.getRequestDispatcher("error.jsp").forward(req, res);
+        req.getRequestDispatcher("/main/error.jsp").forward(req, res);
     }
 }

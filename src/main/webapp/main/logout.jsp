@@ -10,7 +10,7 @@
 
 	<h2>ログアウト</h2>
 	<p>ログアウトしました</p>
-	<a href="">ログイン</a>
+	<a href="Login.action">ログイン</a>
 	<%@ include file="/common/footer.jsp" %>
 </body>
 </html>

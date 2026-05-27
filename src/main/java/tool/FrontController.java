@@ -38,8 +38,8 @@ public class FrontController extends HttpServlet {
         }
     }
     @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
+    public void doPost(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-        doGet(request, response);
+        doGet(req, res);
     }
 }

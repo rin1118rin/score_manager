@@ -1,9 +1,11 @@
-package main;
+package scoremanager.main;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class TestListStudentExecuteAction {
+import tool.Action;
+
+public class TestListStudentExecuteAction extends Action {
 	public void execute(HttpServletRequest req,HttpServletResponse res) {
 		
 	}

@@ -52,7 +52,7 @@ public class Student implements Serializable {
 		return isAttend;
 	}
 	
-	public void setisAttend(boolean isAttend) {
+	public void setAttend(boolean isAttend) {
 		this.isAttend = isAttend;
 	}
 	

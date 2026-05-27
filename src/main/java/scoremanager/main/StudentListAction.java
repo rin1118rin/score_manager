@@ -1,4 +1,4 @@
-package main;
+package scoremanager.main;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -22,6 +22,9 @@ public class StudentListAction extends Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
 		Teacher teacher = (Teacher)session.getAttribute("user");
+		if (teacher == null) {
+			response.sendRedirect("Login.action");
+		}
 		
 		String entYearStr = "";
 		String classNum = "";
@@ -43,10 +46,16 @@ public class StudentListAction extends Action {
 			entYear = Integer.parseInt(entYearStr);
 		}
 		
+		if (isAttendStr != null) {
+			isAttend = true;
+		}
+		
 		List<Integer> entYearSet = new ArrayList<>();
 		for (int i = year - 10; i < year + 1; i++) {
 			entYearSet.add(i);
 		}
+		
+		System.out.println(teacher.getSchool());
 		
 		List<String> list = cNumDao.filter(teacher.getSchool());
 		
@@ -54,21 +63,17 @@ public class StudentListAction extends Action {
 			students = sDao.filter(teacher.getSchool(), entYear, classNum, isAttend);
 		} else if (entYear !=0 && classNum.equals("0")) {
 			students = sDao.filter(teacher.getSchool(), entYear, isAttend);
-		} else if (entYear !=0 && classNum == null || entYear == 0 && classNum.equals("0")) {
+		} else if (entYear ==0 && classNum == null || entYear == 0 && classNum.equals("0")) {
 			students = sDao.filter(teacher.getSchool(), isAttend);
 		} else {
 			errors.put("f1", "クラスを指定する場合は入学年度も指定してください");
 			request.setAttribute("errors", errors);
 			students = sDao.filter(teacher.getSchool(), isAttend);
 		}
-		
+
 		request.setAttribute("f1", entYear);
 		request.setAttribute("f2", classNum);
-		
-		if (isAttendStr != null) {
-			isAttend = true;
-			request.setAttribute("f3", isAttendStr);
-		}
+		request.setAttribute("f3", isAttend);
 		request.setAttribute("students", students);
 		request.setAttribute("class_num_set", list);
 		request.setAttribute("ent_year_set", entYearSet);

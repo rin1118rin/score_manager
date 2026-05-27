@@ -18,7 +18,7 @@
 			<form action="" method="get" class="search-box">
 				<div class="">
 					<label>入学年度</label> <select name="f1">
-						<option value="1">--------</option>
+						<option value="0">--------</option>
 						<c:forEach var="year" items="${ent_year_set }">
 							<option value="${year }" <c:if test="${year==f1 }">selected</c:if>>${year }</option>
 						</c:forEach>
@@ -26,7 +26,7 @@
 				</div>
 				<div class="">
 					<label>クラス</label> <select name="f2">
-						<option value="2">--------</option>
+						<option value="0">--------</option>
 						<c:forEach var="num" items="${class_num_set }">
 							<option value="${num }" <c:if test="${num==f2 }">selected</c:if>>${num }</option>
 						</c:forEach>
@@ -34,7 +34,7 @@
 				</div>
 				<div class="">
 					<label class="form-check-label" id="student-f3-check">在学中
-						<input class="form-check-input" type="checkbox" id="student-f3-check" name="f3" value="t"<c:if test="${!empty f3 }">checked</c:if>>
+						<input class="form-check-input" type="checkbox" id="student-f3-check" name="f3" value="1"<c:if test="${f3 == true }">checked</c:if>>
 					</label>
 				</div>
 				<div class="">
@@ -63,7 +63,7 @@
 								<td>${student.classNum}</td>
 									<td>
 										<c:choose>
-											<c:when test="${student.isAttend() }">
+											<c:when test="${student.attend }">
 												〇
 											</c:when>
 											<c:otherwise>

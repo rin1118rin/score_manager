@@ -10,7 +10,7 @@
 	<nav>
 		<c:if test="${not empty loginUserName}">
 			<span>${user.name}</span>様
-			<a href="">ログアウト</a>
+			<a href="Logout.action">ログアウト</a>
 		</c:if>
 	</nav>
 </header>

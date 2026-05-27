@@ -25,7 +25,6 @@ public class Dao {
             // ② JNDI (Java Naming and Directory Interface) を利用して `InitialContext` を作成
             InitialContext ic = new InitialContext();
 
-            // ③ JNDI からデータソース (`jdbc/book`) を取得し、`ds` に保存
             ds = (DataSource) ic.lookup("java:comp/env/jdbc/score");
         }
 
