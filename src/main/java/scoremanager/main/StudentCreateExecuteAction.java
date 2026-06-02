@@ -79,7 +79,7 @@ public class StudentCreateExecuteAction extends Action {
 
 			req.setAttribute("error", "学生番号が重複しています");
 
-			req.getRequestDispatcher("student_create.jsp")
+			req.getRequestDispatcher("/main/student_create.jsp")
 					.forward(req, res);
 			return;
 		}
@@ -101,6 +101,6 @@ public class StudentCreateExecuteAction extends Action {
 		
 		sDao.save(student);
 		
-		req.getRequestDispatcher("main/student_create_done.jsp").forward(req, res);
+		req.getRequestDispatcher("/main/student_create_done.jsp").forward(req, res);
 	}
 }

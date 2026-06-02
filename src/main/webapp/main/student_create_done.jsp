@@ -15,8 +15,8 @@
 	    <div class="main">
 	    		<h2>学生情報登録</h2>
 	    		<label>登録が完了しました</label>
-	    		<a href="">戻る</a>
-	    		<a href="">学生一覧</a>
+	    		<a href="StudentCreate.action">戻る</a>
+	    		<a href="StudentList.action">学生一覧</a>
 	    </div>
 	</div>
 	
