@@ -10,7 +10,8 @@ import bean.Subject;
 import bean.Test;
 
 public class TestDao extends Dao {
-	private String baseSql;
+	
+	private String baseSql = "SELECT * FROM TEST WHERE SCHOOL_CD=?";
 	
 	public Test get(Student student,Subject subject,School school,int no) throws Exception {
 		

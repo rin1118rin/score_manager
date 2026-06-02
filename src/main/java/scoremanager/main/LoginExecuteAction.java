@@ -30,6 +30,6 @@ public class LoginExecuteAction extends Action {
             return;
         }
 
-        req.getRequestDispatcher("/main/error.jsp").forward(req, res);
+        req.getRequestDispatcher("/error.jsp").forward(req, res);
     }
 }

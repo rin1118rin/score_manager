@@ -60,29 +60,136 @@ public class SubjectDao extends Dao {
 	
 	public List<Subject> filter(School school) throws Exception {
 		
-		List<String> list = new ArrayList<>();
+		List<Subject> list = new ArrayList<>();
 		
 		Connection connection = getConnection();
 		
 		PreparedStatement statement = null;
-	} try {
 		
-		statement = connection.prepareStatement("select * from subject where school_cd = ? order by subject");
-		
-		statement.setString(1, school.getCd());
-		
-		ResultSet rSet = statement.executeQuery();
-		
-		while (rSet.next()) {
-			list.add(rSet.getString("subject"));
-		} 
-	} 
+		try {
+			
+			statement = connection.prepareStatement("select * from subject where school_cd = ? order by subject");
+			
+			statement.setString(1, school.getCd());
+			
+			ResultSet rSet = statement.executeQuery();
+			
+			SchoolDao sDao = new SchoolDao();
+			
+			while (rSet.next()) {
+				
+				Subject subject = new Subject();
+
+				subject.setSchool(sDao.get(rSet.getString("school_cd")));
+				subject.setCd(rSet.getString("cd"));
+				subject.setName(rSet.getString("name"));
+				
+				list.add(subject);
+				
+			} 
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+		}
+		return list;
+	}  
 	
-	public boolean sava(Subject subject) throws Exception {
+	public boolean save(Subject subject) throws Exception {
 		
+		Connection connection = getConnection();
+		
+	    PreparedStatement statement = null;
+	    
+	    int count = 0;
+	    
+	    try {
+	    	
+	    	statement = connection.prepareStatement("INSERT INTO SUBJECT (SCHOOL_CD, CD, SUBJECT) VALUES (?, ?, ?)");
+	    	
+	    	statement.setString(1, subject.getSchool().getCd());
+	        statement.setString(2, subject.getCd());
+	        statement.setString(3, subject.getName());
+	        
+	        count = statement.executeUpdate();
+	        
+	    } catch (Exception e) {
+			throw e;
+		} finally {
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+		}
+	    if (count > 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	public boolean delete(Subject subject) throws Exception {
 		
+		Connection connection = getConnection();
+		
+	    PreparedStatement statement = null;
+	    
+	    int count = 0;
+		
+	    try {
+	    	
+	    	statement = connection.prepareStatement("DELETE FROM SUBJECT WHERE SCHOOL_CD = ? AND CD = ?");
+	    	
+	    	statement.setString(1, subject.getSchool().getCd());
+	    	
+	        statement.setString(2, subject.getCd());
+	        
+	        count = statement.executeUpdate();
+	    } catch (Exception e) {
+			throw e;
+		} finally {
+			if (statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					throw sqle;
+				}
+			}
+		}
+	    if (count > 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
