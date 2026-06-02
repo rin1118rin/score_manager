@@ -14,7 +14,7 @@
 	
 	    <div class="main">
 	    		<h2>学生情報登録</h2>
-	    		<form action="" method="post">
+	    		<form action="StudentCreateExecute.action" method="post">
 		    		<c:if test="${not empty error}">
 				    <p style="color: orange;">${error}</p>
 				</c:if>
@@ -47,7 +47,7 @@
 	    			<div>
 	    				<button type="submit" name="end">登録して終了</button>
 	    			</div>
-	    			<a href="">戻る</a>
+	    			<a href="StudentList.action">戻る</a>
 	    		</form>
 	    </div>
 	</div>
