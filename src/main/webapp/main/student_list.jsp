@@ -14,7 +14,7 @@
 
 		<div class="main">
 			<h2>学生管理</h2>
-			<a href="">新規登録</a>
+			<a href="StudentCreate.action">新規登録</a>
 			<form action="" method="get" class="search-box">
 				<div class="">
 					<label>入学年度</label> <select name="f1">

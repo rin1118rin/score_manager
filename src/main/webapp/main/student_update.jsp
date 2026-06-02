@@ -14,7 +14,7 @@
 	
 	    <div class="main">
 	    		<h2>学生情報変更</h2>
-	    		<form action="" method="post">
+	    		<form action="StudentCreateExecute.action" method="post">
 	    			<div>
 	    				<label>入学年度</label>
 	    				<input type="text" name="ent_year" value="${ent_year}" readonly>
