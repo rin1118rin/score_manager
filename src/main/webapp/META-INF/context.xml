@@ -17,7 +17,7 @@
 		auth="Container"
 		type="javax.sql.DataSource"
 		driverClassName="org.h2.Driver"
-		url="jdbc:h2:tcp://localhost/~/score"
+		url="jdbc:h2:~/score;AUTO_SERVER=TRUE"
 		username="sa"
 		password=""
 	/>

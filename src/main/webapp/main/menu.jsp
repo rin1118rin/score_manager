@@ -19,7 +19,7 @@
 <a href="">成績参照</a>
 </div>
 
-<a href="">科目管理</a>
+<a href="SubjectListAction">科目管理</a>
 
 <%@ include file="/common/footer.jsp" %>
 </body>

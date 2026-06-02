@@ -16,20 +16,30 @@ public class LoginExecuteAction extends Action {
 
         String id = req.getParameter("id");
         String password = req.getParameter("password");
+        
+        try {
+        		TeacherDao dao = new TeacherDao();
+            Teacher teacher = dao.login(id, password);
+            
+            System.out.println("teacher = " + teacher);
+            
+            if (teacher != null) {
 
-        TeacherDao dao = new TeacherDao();
+                session.setAttribute("user", teacher);
 
-        Teacher teacher = dao.login(id, password);
+                req.getRequestDispatcher("/main/menu.jsp").forward(req, res);
 
-        if (teacher != null) {
-
-            session.setAttribute("user", teacher);
-
-            req.getRequestDispatcher("/main/menu.jsp").forward(req, res);
-
+                return;
+            }
+            
+            req.setAttribute("error", "ログインに失敗しました。IDまたはパスワードが正しくありません。");
+            req.getRequestDispatcher("/main/login.jsp").forward(req,res);
             return;
+            
+        } catch (Exception e) {
+        		e.printStackTrace();
+        		req.getRequestDispatcher("/error.jsp")
+        			.forward(req, res);	
         }
-
-        req.getRequestDispatcher("/main/error.jsp").forward(req, res);
     }
 }
