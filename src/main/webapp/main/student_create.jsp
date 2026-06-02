@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,9 +15,18 @@
 	    <div class="main">
 	    		<h2>学生情報登録</h2>
 	    		<form action="" method="post">
+		    		<c:if test="${not empty error}">
+				    <p style="color: orange;">${error}</p>
+				</c:if>
+
 	    			<div>
 	    				<label>入学年度</label>
-	    				<select name="ent_year"></select>
+	    				<select name="ent_year">
+	    				    <option value="">--------</option>
+					    <c:forEach var="year" items="${ent_year_set}">
+					        <option value="${year}">${year}</option>
+					    </c:forEach>
+	    				</select>
 	    			</div>
 	    			<div>
 	    				<label>学生番号</label>
@@ -29,7 +38,11 @@
 	    			</div>
 	    			<div>
 	    				<label>クラス</label>
-	    				<select name="class_num"></select>
+	    				<select name="class_num">
+					    <c:forEach var="classNum" items="${class_num_set}">
+					        <option value="${classNum}">${classNum}</option>
+					    </c:forEach>
+	    				</select>
 	    			</div>
 	    			<div>
 	    				<button type="submit" name="end">登録して終了</button>

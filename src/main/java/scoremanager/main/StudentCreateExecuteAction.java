@@ -43,36 +43,48 @@ public class StudentCreateExecuteAction extends Action {
 		
 		classNum = req.getParameter("class_num");
 		
-		if (entYearStr != null && !entYearStr.equals("")) {
-			entYear = Integer.parseInt(entYearStr);
+		LocalDate today = LocalDate.now();
+		int year = today.getYear();
+
+		List<Integer> entYearSet = new ArrayList<>();
+
+		for (int i = year - 10; i <= year; i++) {
+			entYearSet.add(i);
 		}
-		if (entYearStr == null || entYearStr.equals("")) {
-			req.setAttribute("no", no);
-			req.setAttribute("name", name);
-			req.setAttribute("class_num", classNum);
-			req.setAttribute("ent_year", entYearStr);
-			
-			LocalDate todaysDate = LocalDate.now();
-			
-			int year = todaysDate.getYear();
-			
-			ClassNumDao cNumDao = new ClassNumDao();
-			
-			List<Integer> entYearSet = new ArrayList<>();
-			for (int i = year - 10; i < year + 1; i++) {
-				entYearSet.add(i);
-			}
-		
-			if (sDao.get(no) != null ) {
-			
-				List<String> list = cNumDao.filter(teacher.getSchool());
-				
-				req.setAttribute("class_num_set", list);
-				
-				req.setAttribute("ent_year_set", entYearSet);
-			}
-			
+
+		ClassNumDao cNumDao = new ClassNumDao();
+		List<String> classNumSet = cNumDao.filter(teacher.getSchool());
+
+		// 入力値保持
+		req.setAttribute("no", no);
+		req.setAttribute("name", name);
+		req.setAttribute("class_num", classNum);
+		req.setAttribute("ent_year", entYearStr);
+
+		req.setAttribute("ent_year_set", entYearSet);
+		req.setAttribute("class_num_set", classNumSet);
+
+		// 入学年度未選択
+		if (entYearStr == null || entYearStr.isEmpty()) {
+
+			req.setAttribute("error", "入学年度を選択してください");
+
+			req.getRequestDispatcher("student_create.jsp")
+					.forward(req, res);
+			return;
 		}
+
+		// 学生番号重複
+		if (sDao.get(no) != null) {
+
+			req.setAttribute("error", "学生番号が重複しています");
+
+			req.getRequestDispatcher("student_create.jsp")
+					.forward(req, res);
+			return;
+		}
+
+		entYear = Integer.parseInt(entYearStr);
 		Student student = new Student();
 		
 		student.setNo(no);
