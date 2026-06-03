@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import bean.School;
+import bean.Subject;
 import bean.Teacher;
 import dao.SubjectDao;
 import tool.Action;
@@ -18,7 +19,7 @@ public class SubjectListAction extends Action {
 		
 		School school = teacher.getSchool();
 		
-		subjectDao dao = new SubjectDao();
+		SubjectDao dao = new SubjectDao();
 		
 		List<Subject> list = dao.filter(school);
 		

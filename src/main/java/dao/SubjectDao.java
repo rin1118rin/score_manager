@@ -117,15 +117,19 @@ public class SubjectDao extends Dao {
 	    int count = 0;
 	    
 	    try {
-	    	
-	    	statement = connection.prepareStatement("INSERT INTO SUBJECT (SCHOOL_CD, CD, SUBJECT) VALUES (?, ?, ?)");
-	    	
-	    	statement.setString(1, subject.getSchool().getCd());
-	        statement.setString(2, subject.getCd());
-	        statement.setString(3, subject.getName());
-	        
-	        count = statement.executeUpdate();
-	        
+	    	Subject old = get(subject.getCd(), subject.getSchool());
+	    	if (old == null) {
+		    	statement = connection.prepareStatement("INSERT INTO SUBJECT (SCHOOL_CD, CD, NAME) VALUES (?, ?, ?)");
+		    	statement.setString(1, subject.getSchool().getCd());
+		        statement.setString(2, subject.getCd());
+		        statement.setString(3, subject.getName());
+	    	} else {
+	    		statement = connection.prepareStatement("UPDATE SUBJECT SET NAME=? WHERE SCHOOL_CD=? AND CD=?");
+	    		statement.setString(3, subject.getName());
+	    		statement.setString(1, subject.getSchool().getCd());
+		        statement.setString(2, subject.getCd());
+	    	}
+	    	count = statement.executeUpdate();
 	    } catch (Exception e) {
 			throw e;
 		} finally {
