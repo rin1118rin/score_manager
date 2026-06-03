@@ -1,5 +1,6 @@
 package bean;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class TestListSubject {
@@ -55,10 +56,15 @@ public class TestListSubject {
 	}
 	
 	public String getPoint(int key) {
-		return Integer.toString(key);
+		return Integer.toString(points.get(key));
 	}
 	
 	public void putPoint(int key, int value) {
 		
+		if (points == null) {
+			points = new HashMap<>();
+		}
+		
+		points.put(key, value);
 	}
 }
