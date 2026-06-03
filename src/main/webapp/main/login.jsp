@@ -2,72 +2,82 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 <head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Rajdhani:wght@300;400;500;600&display=swap"
+      rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" type="text/css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 
 <body>
-	<%@ include file="/common/header.jsp" %>
-
 	<div class="login-content">
-	    <h2>ログイン</h2>
-	
-	    <form action="LoginExecute.action" method="post">
-	    	<c:if test="${not empty error}">
-		    <p class="error">${error}</p>
-		</c:if>
-	    		
-	        <div class="form-group">
-	            <label for="id">ＩＤ</label>
-	            <input type="text" 
-	                   name="id" 
-	                   id="id" 
-	                   value="${param.id}" 
-	                   placeholder="半角でご入力ください" 
-	                   maxlength="10" 
-	                   required 
-	                   pattern="^[a-zA-Z0-9]+$" 
-	                   title="半角英数字で入力してください">
-	        </div>
-	
-	        <div class="form-group">
-	            <label for="password">パスワード</label>
-	            <input type="password" 
-	                   name="password" 
-	                   id="password" 
-	                   placeholder="30文字以内の半角英数字でご入力ください" 
-	                   maxlength="30" 
-	                   required 
-	                   pattern="^[a-zA-Z0-9]+$" 
-	                   title="半角英数字で入力してください">
-	        </div>
-	
-	        <div class="form-group checkbox-group">
-	            <input type="checkbox" 
-	                   id="chk_d_ps" 
-	                   onclick="togglePasswordVisibility()">
-	            <label for="chk_d_ps">パスワードを表示</label>
-	        </div>
-	
-	        <div class="form-group action-group">
-	            <input type="submit" 
-	                   value="ログイン">
-	        </div>
-	
-	    </form>
+		<div class="login-content-left">
+			<h1 class="under-line"><i class="fa-solid fa-display"></i>得点管理システム</h1>
+		</div>
+		
+		<div class="login-content-right">
+			<h2>ログイン</h2>
+			<form action="LoginExecute.action" method="post">
+			    	<c:if test="${not empty error}">
+				    <p class="error">${error}</p>
+				</c:if>
+		    		
+		        <div class="form-group">
+		            <label for="id">ユーザーID</label>
+		            <div class="input-box">
+		            		<span class="material-symbols-outlined"><i class="fa-regular fa-user"></i></span>
+			            <input type="text" 
+			                   name="id" 
+			                   id="id" 
+			                   value="${param.id}" 
+			                   placeholder="半角でご入力ください" 
+			                   maxlength="10" 
+			                   required 
+			                   pattern="^[a-zA-Z0-9]+$" 
+			                   title="半角英数字で入力してください">
+					</div>
+		        </div>
+		
+		        <div class="form-group">
+		            <label for="password">パスワード</label>
+		            <div class="input-box">
+            				<span class="material-symbols-outlined"><i class="fa-solid fa-lock"></i></span>
+			            <input type="password" 
+			                   name="password" 
+			                   id="password" 
+			                   placeholder="パスワード" 
+			                   maxlength="30" 
+			                   required 
+			                   pattern="^[a-zA-Z0-9]+$" 
+			                   title="パスワード">
+						<i class="fa-regular fa-eye password-toggle" onclick="togglePasswordVisibility()"></i>
+					</div>
+		        </div>
+
+		        <div class="form-group action-group">
+		            <input type="submit" value="ログイン" class="login-button"> 
+		        </div>
+		
+		    </form>
+		</div>
 	</div>
 	
 	<script>
-	    function togglePasswordVisibility() {
-	        var passwordField = document.getElementById("password");
-	        var checkbox = document.getElementById("chk_d_ps");
-	        
-	        if (checkbox.checked) {
-	            passwordField.type = "text";
-	        } else {
-	            passwordField.type = "password";
-	        }
+	function togglePasswordVisibility() {
+	    const passwordField = document.getElementById("password");
+	    const icon = document.querySelector(".password-toggle");
+
+	    if (passwordField.type === "password") {
+	        passwordField.type = "text";
+	        icon.classList.remove("fa-eye");
+	        icon.classList.add("fa-eye-slash");
+	    } else {
+	        passwordField.type = "password";
+	        icon.classList.remove("fa-eye-slash");
+	        icon.classList.add("fa-eye");
 	    }
+	}
 	</script>
-	<%@ include file="/common/footer.jsp" %>
 </body>
 </html>
