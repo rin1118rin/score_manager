@@ -5,7 +5,7 @@
 	<%@ include file="/common/head.jsp" %>
 </head>
 
-<body>
+<body class="login-body">
 	<div class="login-content">
 		<div class="login-content-left">
 			<h1 class="under-line"><i class="fa-solid fa-display"></i>得点管理システム</h1>
