@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+	<%@ include file="/common/head.jsp" %>
 </head>
 <body>
 	<%@ include file="/common/header.jsp" %>

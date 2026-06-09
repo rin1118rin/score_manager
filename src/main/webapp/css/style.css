@@ -1,12 +1,13 @@
 /*============*/
 /*得点管理システム*/
 /*============*/
-
 /*===========*/
 /*  共通部分  */
 /*===========*/
-/*リセット*/
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Rajdhani:wght@300;400;500;600&display=swap');
+
+.aaaa {
+	background-color: red;
+}
 
 * {
     margin: 0;
@@ -45,18 +46,19 @@ h1,h2 {
 /*   ヘッダー   */
 /*===========*/
 
+.header {
+	background-color: red;
+}
+
 /*===========*/
 /*  サイドバー  */
 /*===========*/
 
+
 /*===========*/
 /*   フッダー   */
 /*===========*/
-footer {
-	margin-left: auto;
-	margin-bottom: auto;
-	color: var(--white);
-}
+
 
 /*===========*/
 /*   ログイン   */

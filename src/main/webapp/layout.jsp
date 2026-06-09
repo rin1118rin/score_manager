@@ -1,11 +1,16 @@
-<%@ include file="/common/header.jsp" %>
+<html>
+<head>
+    <%@ include file="/common/head.jsp" %>
+</head>
 
-<div class="container">
+<body>
+
+    <%@ include file="/common/header.jsp" %>
     <%@ include file="/common/sidebar.jsp" %>
 
-    <div class="main">
-    
-    </div>
-</div>
 
-<%@ include file="/common/footer.jsp" %>
+
+    <%@ include file="/common/footer.jsp" %>
+
+</body>
+</html>

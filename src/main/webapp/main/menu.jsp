@@ -3,25 +3,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+	<%@ include file="/common/head.jsp" %>
 </head>
 <body>
 <%@ include file="/common/header.jsp" %>
 
 <%@ include file="/common/sidebar.jsp" %>
-
-<h2>メニュー</h2>
-
-<a href="StudentList.action">学生管理</a>
-
-<div>
-成績管理
-<a href="">成績登録</a>
-<a href="">成績参照</a>
+<div class="aaaa">
+	<h2>メニュー</h2>
+	
+	<a href="StudentList.action">学生管理</a>
+	
+	<div>
+	成績管理
+	<a href="">成績登録</a>
+	<a href="">成績参照</a>
+	</div>
+	
+	<a href="SubjectListAction">科目管理</a>
 </div>
-
-<a href="SubjectListAction">科目管理</a>
-
 <%@ include file="/common/footer.jsp" %>
 </body>
 </html>
