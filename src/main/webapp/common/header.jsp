@@ -1,17 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java"
+    contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
-</head>
-<header>
-	<h1>得点管理システム</h1>
-	<nav>
-		<c:if test="${not empty loginUserName}">
-			<span>${user.name}</span>様
-			<a href="Logout.action">ログアウト</a>
-		</c:if>
-	</nav>
+<header class="header">
+
+    <div class="header-title">
+        <h1>得点管理システム</h1>
+    </div>
+
+    <nav class="header-user">
+        <c:if test="${not empty user}">
+            <span>${user.name}</span>
+            <span>様</span>
+
+            <a href="Logout.action">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                ログアウト
+            </a>
+        </c:if>
+    </nav>
+
 </header>
-</html>
