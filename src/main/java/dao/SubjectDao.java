@@ -68,7 +68,7 @@ public class SubjectDao extends Dao {
 		
 		try {
 			
-			statement = connection.prepareStatement("select * from subject where school_cd = ? order by subject");
+			statement = connection.prepareStatement("select * from subject where school_cd = ? order by name");
 			
 			statement.setString(1, school.getCd());
 			

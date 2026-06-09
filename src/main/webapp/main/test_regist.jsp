@@ -18,21 +18,29 @@
 			    <div class="">
 			        <label>入学年度</label>
 			        <select name="f1">
-			            <option value="">--------</option>
-			        </select>
+	    				<option value="0">--------</option>
+	    				<c:forEach var="year" items="${ent_year_set }">
+	    					<option value="${year }" <c:if test="${year==f1 }">selected</c:if>>${year }</option>
+						</c:forEach>
+	    			</select>
 			    </div>
 			
 			    <div class="">
 			        <label>クラス</label>
 			        <select name="f2">
-			            <option value="">--------</option>
-			        </select>
+	    				<c:forEach var="num" items="${list}">
+							<option value="${num }" <c:if test="${num==f2 }">selected</c:if>>${num }</option>
+						</c:forEach>
+	    			</select>
 			    </div>
 			    <div class="">
 			        <label>科目</label>
 			        <select name="f3">
-			            <option value="">--------</option>
-			        </select>
+	    				<option value="0">--------</option>
+	    				<c:forEach var="subject" items="${subjects }">
+	    					<option value="${subject.cd }" <c:if test="${subject.cd==f3 }">selected</c:if>>${subject.name }</option>
+	    				</c:forEach>
+	    			</select>
 			    </div>
 			    <div class="">
 			        <label>回数</label>

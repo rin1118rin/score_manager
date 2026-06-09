@@ -56,7 +56,13 @@ public class TestListSubject {
 	}
 	
 	public String getPoint(int key) {
-		return Integer.toString(points.get(key));
+		Integer point = points.get(key);
+
+	    if (point == null) {
+	        return "";
+	    }
+
+	    return point.toString();
 	}
 	
 	public void putPoint(int key, int value) {
