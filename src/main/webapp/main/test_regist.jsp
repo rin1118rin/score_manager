@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +28,7 @@
 			    <div class="">
 			        <label>クラス</label>
 			        <select name="f2">
-	    				<c:forEach var="num" items="${list}">
+	    				<c:forEach var="num" items="${class_num_set }">
 							<option value="${num }" <c:if test="${num==f2 }">selected</c:if>>${num }</option>
 						</c:forEach>
 	    			</select>
@@ -44,8 +45,11 @@
 			    <div class="">
 			        <label>回数</label>
 			        <select name="f4">
-			            <option value="">--------</option>
-			        </select>
+	    				<option value="0">--------</option>
+	    				<c:forEach var="subject" items="${test_no_set }">
+	    					<option value="${no }" <c:if test="${no==f4 }">selected</c:if>>${no }</option>
+	    				</c:forEach>
+	    			</select>
 			    </div>
 			    <div class="">
 			        <button type="submit">検索</button>
@@ -57,7 +61,7 @@
 						<p>検索内容が存在しませんでした</p>
 					</c:when>
 					<c:otherwise>
-						<form action="" method="post">
+						<form action="TestRegistExecute.action" method="post">
 							<div>科目: ${param.f3} ${param.f4}</div>
 							<table>
 								<tr>
@@ -69,12 +73,12 @@
 								</tr>
 								<c:forEach var="test" items="${list}">
 									<tr>
-										<td>${test.entYear}</td>
-										<td>${test.classNum}</td>
-										<td>${test.no}</td>
-										<td>${test.name}</td>
+										<td>${test.student.entYear}</td>
+										<td>${test.student.classNum}</td>
+										<td>${test.student.no}</td>
+										<td>${test.student.name}</td>
 										<td>
-											<input type="number" name="point_${test.no}"
+											<input type="number" name="point_${test.student.no}"
 												value="${empty test.point ? '' : test.point}"
 												min="0" max="100">
 										</td>

@@ -55,7 +55,7 @@ public class StudentCreateExecuteAction extends Action {
 		ClassNumDao cNumDao = new ClassNumDao();
 		List<String> classNumSet = cNumDao.filter(teacher.getSchool());
 
-		// 入力値保持
+
 		req.setAttribute("no", no);
 		req.setAttribute("name", name);
 		req.setAttribute("class_num", classNum);
@@ -64,7 +64,7 @@ public class StudentCreateExecuteAction extends Action {
 		req.setAttribute("ent_year_set", entYearSet);
 		req.setAttribute("class_num_set", classNumSet);
 
-		// 入学年度未選択
+
 		if (entYearStr == null || entYearStr.isEmpty()) {
 
 			req.setAttribute("error", "入学年度を選択してください");
@@ -74,7 +74,6 @@ public class StudentCreateExecuteAction extends Action {
 			return;
 		}
 
-		// 学生番号重複
 		if (sDao.get(no) != null) {
 
 			req.setAttribute("error", "学生番号が重複しています");

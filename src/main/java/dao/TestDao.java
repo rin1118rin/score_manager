@@ -81,12 +81,19 @@ public class TestDao extends Dao {
 				Subject subject = new Subject();
 				Student student = new Student();
 				
-				test.setStudent(student);
-				test.setClassNum("class_num");
-				test.setSubject(subject);
-				test.setNo(rSet.getInt("no"));
-				test.setPoint(rSet.getInt("point"));
-				test.setSchool(school);
+				student.setNo(rSet.getString("STUDENT_NO"));
+			    student.setName(rSet.getString("NAME"));
+			    student.setClassNum(rSet.getString("CLASS_NUM"));
+			    student.setEntYear(rSet.getInt("ENT_YEAR"));
+
+			    subject.setCd(rSet.getString("SUBJECT_CD"));
+
+			    test.setStudent(student);
+			    test.setSubject(subject);
+			    test.setNo(rSet.getInt("NO"));
+			    test.setPoint(rSet.getInt("POINT"));
+			    test.setSchool(school);
+			    test.setClassNum(rSet.getString("CLASS_NUM"));
 				
 				list.add(test);
 			}
@@ -97,7 +104,7 @@ public class TestDao extends Dao {
 		return list;
 	}
 	
-	public List<Test> filter(int entYear,String classNum,Subject subject,int num,School school) throws Exception {
+	public List<Test> filter(int entYear,String classNum,Subject subject,int no,School school) throws Exception {
 		
 		List<Test> list = new ArrayList<>();
 		
@@ -114,7 +121,7 @@ public class TestDao extends Dao {
 			statement.setInt(2, entYear);
 			statement.setString(3, classNum);
 			statement.setString(4, subject.getCd());
-			statement.setInt(5, num);
+			statement.setInt(5, no);
 			
 			rSet = statement.executeQuery();
 			
@@ -141,7 +148,7 @@ public class TestDao extends Dao {
 		return list;
 	}
 	
-	public boolean sava(List<Test> list) throws Exception {
+	public boolean save(List<Test> list) throws Exception {
 		
 		Connection connection = getConnection();
 		
@@ -182,7 +189,7 @@ public class TestDao extends Dao {
 			Test old = get(test.getStudent(),test.getSubject(),test.getSchool(),test.getNo());
 			
 			if (old == null) {
-				statement = connection.prepareStatement("INSERT INTO TEST STUDENT_NO, SUBJECT_CD, SCHOOL_CD, NO, POINT, CLASS_NUM, VALUES (?, ?, ?, ?, ?, ?)");
+				statement = connection.prepareStatement("INSERT INTO TEST (STUDENT_NO, SUBJECT_CD, SCHOOL_CD, NO, POINT, CLASS_NUM) VALUES (?, ?, ?, ?, ?, ?)");
 				
 				statement.setString(1, test.getStudent().getNo());
 	            statement.setString(2, test.getSubject().getCd());
