@@ -1,45 +1,133 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
 <html>
 <head>
-	<%@ include file="/common/head.jsp" %>
+    <%@ include file="/common/head.jsp" %>
 </head>
+
 <body>
-	<%@ include file="/common/header.jsp" %>
-	
-	<div class="container">
-	    <%@ include file="/common/sidebar.jsp" %>
-	
-	    <div class="main">
-	    		<h2>学生情報変更</h2>
-	    		<form action="StudentCreateExecute.action" method="post">
-	    			<div>
-	    				<label>入学年度</label>
-	    				<input type="text" name="ent_year" value="${ent_year}" readonly>
-	    			</div>
-	    			<div>
-	    				<label>学生番号</label>
-	    				<input type="text" name="no" value="${no}" readonly>
-	    			</div>
-	    			<div>
-	    				<label>氏名</label>
-	    				<input type="text" name="name" value="${name}" maxlength="30" required>
-	    			</div>
-	    			<div>
-	    				<label>クラス</label>
-	    				<select name="class_num"></select>
-	    			</div>
-	    			<div>
-	    				<label>在学中</label>
-	    				<input type="checkbox" name="is_attend">
-	    			</div>
-	    			<input type="submit"name="login">
-	    			<a href="">戻る</a>
-	    		</form>
-	    </div>
-	</div>
-	
-	<%@ include file="/common/footer.jsp" %>
+
+    <%@ include file="/common/header.jsp" %>
+
+    <div class="container">
+
+        <%@ include file="/common/sidebar.jsp" %>
+
+        <div class="main student-update-page">
+
+            <h2 class="page-title">
+                学生情報変更
+            </h2>
+
+            <form class="student-update-form"
+                  action="StudentUpdateExecute.action"
+                  method="post">
+
+                <!-- 入学年度 -->
+                <div class="form-group">
+
+                    <label>入学年度</label>
+
+                    <input type="text"
+                           name="ent_year"
+                           value="${student.entYear}"
+                           readonly>
+
+                </div>
+
+                <!-- 学生番号 -->
+                <div class="form-group">
+
+                    <label>学生番号</label>
+
+                    <input type="text"
+                           name="no"
+                           value="${student.no}"
+                           readonly>
+
+                </div>
+
+                <!-- 氏名 -->
+                <div class="form-group">
+
+                    <label>氏名</label>
+
+                    <input type="text"
+                           name="name"
+                           value="${student.name}"
+                           maxlength="30"
+                           required>
+
+                </div>
+
+                <!-- クラス -->
+                <div class="form-group">
+
+                    <label>クラス</label>
+
+                    <select name="class_num">
+
+                        <c:forEach var="num" items="${class_num_set}">
+
+                            <option value="${num}"
+                                <c:if test="${num == student.classNum}">
+                                    selected
+                                </c:if>>
+
+                                ${num}
+
+                            </option>
+
+                        </c:forEach>
+
+                    </select>
+
+                </div>
+
+                <!-- 在学中 -->
+                <div class="check-group">
+
+                    <label class="check-label">
+
+                        <input type="checkbox"
+                               name="is_attend"
+                               <c:if test="${student.attend}">
+                                   checked
+                               </c:if>>
+
+                        <span>在学中</span>
+
+                    </label>
+
+                </div>
+
+                <!-- ボタン -->
+                <div class="button-area">
+
+                    <button type="submit"
+                            class="submit-button">
+
+                        変更する
+
+                    </button>
+
+                    <a href="StudentList.action"
+                       class="back-button">
+
+                        戻る
+
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <%@ include file="/common/footer.jsp" %>
+
 </body>
 </html>

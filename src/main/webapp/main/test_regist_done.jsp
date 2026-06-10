@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 <head>
 	<%@ include file="/common/head.jsp" %>
@@ -10,15 +9,37 @@
 	
 	<div class="container">
 	    <%@ include file="/common/sidebar.jsp" %>
-	
-	    <div class="main">
-	    		<h2>成績管理</h2>
-	    		<label>変更が完了しました</label>
-	    		<a href="">戻る</a>
-	    		<a href="">成績参照</a>
-	    </div>
-	</div>
-	
+		<div class="main score-complete-page">
+		
+		    <div class="complete-card">
+		
+		        <h2>成績管理</h2>
+		
+		        <p class="complete-message">
+		            変更が完了しました
+		        </p>
+		
+		        <div class="complete-button-area">
+		
+		            <a href=""
+		               class="sub-button">
+		
+		                戻る
+		
+		            </a>
+		
+		            <a href=""
+		               class="main-button">
+		
+		                成績参照
+		
+		            </a>
+		
+		        </div>
+		
+		    </div>
+		
+		</div>
 	<%@ include file="/common/footer.jsp" %>
 </body>
 </html>
