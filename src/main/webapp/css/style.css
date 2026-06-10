@@ -322,18 +322,11 @@ h1,h2 {
 
     height: calc(100vh - var(--header-height));
 
-    padding: 50px;
+    padding: 15px 50px 50px;
 
     background: #f8f8f8;
-
-    overflow: hidden;
 }
 
-
-body.main-page {
-    background: #f8f8f8;
-    overflow: hidden;
-}
 
 /*===========*/
 /* メニューカード */

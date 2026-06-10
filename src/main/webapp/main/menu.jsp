@@ -1,26 +1,68 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
 <html>
 <head>
+    <%@ include file="/common/head.jsp" %>
 </head>
-<body>
-<%@ include file="/common/header.jsp" %>
 
-<%@ include file="/common/sidebar.jsp" %>
+<body class="main-page">
 
-<h2>メニュー</h2>
+    <%@ include file="/common/header.jsp" %>
 
-<a href="StudentList.action">学生管理</a>
+    <div class="container">
 
-<div>
-成績管理
-<a href="TestRegist.action">成績登録</a>
-<a href="TestList.action">成績参照</a>
-</div>
+        <%@ include file="/common/sidebar.jsp" %>
 
-<a href="SubjectListAction">科目管理</a>
+        <main class="main-content">
 
-<%@ include file="/common/footer.jsp" %>
+            <h2>メニュー</h2>
+
+            <div class="menu-grid">
+
+                <a href="StudentList.action"
+                   class="menu-card">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <h3>学生管理</h3>
+
+                </a>
+
+                <a href="TestRegist.action"
+                   class="menu-card">
+
+                    <i class="fa-solid fa-pen"></i>
+
+                    <h3>成績登録</h3>
+
+                </a>
+
+                <a href="TestList.action"
+                   class="menu-card">
+
+                    <i class="fa-solid fa-chart-column"></i>
+
+                    <h3>成績参照</h3>
+
+                </a>
+
+                <a href="SubjectList.action"
+                   class="menu-card">
+
+                    <i class="fa-solid fa-book"></i>
+
+                    <h3>科目管理</h3>
+
+                </a>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <%@ include file="/common/footer.jsp" %>
+
 </body>
 </html>
