@@ -98,6 +98,6 @@ public class StudentUpadateExecuteAction extends Action {
 		
 		sDao.save(student);
 		
-		req.getRequestDispatcher("main/student_create_done.jsp").forward(req, res);
+		req.getRequestDispatcher("main/student_update_done.jsp").forward(req, res);
 	}
 }

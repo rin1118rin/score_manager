@@ -14,7 +14,7 @@
         </div>
 
         <div class="sub-menu">
-            <a href="">成績登録</a>
+            <a href="TestRegist.action">成績登録</a>
             <a href="TestList.action">成績参照</a>
         </div>
 

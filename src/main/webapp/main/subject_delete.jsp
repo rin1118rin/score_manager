@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@taglib prefix="c" uri="jakarta.tags.core"%>
 <html>
 <head>
 	<%@ include file="/common/head.jsp" %>
@@ -11,16 +11,51 @@
 	<div class="container">
 	    <%@ include file="/common/sidebar.jsp" %>
 	
-	    <div class="main">
-	    		<h2>科目情報削除</h2>
-	    		<label>
-	    			<p>「${subject_name}（${subject_cd}）」を削除してもよろしいですか</p>
-	    		</label>
-	    		<button type="submit" value="削除">削除</button>
-			<a href="">戻る</a>
-			<input type="hidden" name="subject_cd" value="${subject_cd}"
-			<input type="hidden" name="subject_name" value="${subject_name}"
-	    </div>
+	    <main class="page-content subject-delete-page">
+
+		    <h2 class="page-title">
+		        科目情報削除
+		    </h2>
+		
+		    <form class="delete-card"
+		          action="SubjectDeleteExecute.action"
+		          method="post">
+		
+		        <p class="delete-message">
+		            「${subject_name}（${subject_cd}）」を
+		            削除してもよろしいですか？
+		        </p>
+		
+		        <div class="delete-button-area">
+		
+		            <button type="submit"
+		                    class="delete-button">
+		
+		                削除
+		
+		            </button>
+		
+		            <a href="SubjectList.action"
+		               class="back-link">
+		
+		                戻る
+		
+		            </a>
+		
+		        </div>
+		
+		        <input type="hidden"
+		               name="subject_cd"
+		               value="${subject_cd}">
+		
+		        <input type="hidden"
+		               name="subject_name"
+		               value="${subject_name}">
+		
+		    </form>
+		
+		</main>
+	    
 	</div>
 	
 	<%@ include file="/common/footer.jsp" %>
