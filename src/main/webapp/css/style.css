@@ -18,7 +18,7 @@
 
     min-height: calc(100vh - var(--header-height));
 
-    background: var(--white);
+    background: var(--panel-bg);
     color: #000;
 
     padding: 40px;
@@ -42,7 +42,7 @@
 
 
 body {
-    background: #f8f8f8;
+    background: var(--panel-bg);
     color: var(--white);
     width: 100%;
     min-height: 100vh;
@@ -56,6 +56,9 @@ h1,h2 {
 	font-weight: 300;
 }
 
+/*===========*/
+/* ヘッダー */
+/*===========*/
 .header {
     position: fixed;
 
@@ -172,21 +175,12 @@ h1,h2 {
 /*===========*/
 
 .footer {
-    margin-left: var(--sidebar-width);
-
-    height: 50px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 0 30px;
-
-    background: var(--white);
-
-    border-top: 1px solid var(--border);
-
-    color: #666;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--panel-bg);
+	color: var(--black);
+	padding: 50px;
 }
 /*===========*/
 /*   ログイン   */
@@ -324,7 +318,7 @@ h1,h2 {
 
     padding: 15px 50px 50px;
 
-    background: #f8f8f8;
+    background: var(--panel-bg);
 }
 
 
