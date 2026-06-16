@@ -18,12 +18,13 @@ public class TestListStudentDao extends Dao {
 		
 		while (rSet.next()) {
 			
-			TestListStudent testListStudent = new TestListStudent();
 			
-			testListStudent.setSubjectName(rSet.getString("name"));
-			testListStudent.setSubjectCd(rSet.getString("subject_Cd"));
-			testListStudent.setNum(rSet.getInt("num"));
-			testListStudent.setPoint(0);
+			TestListStudent testListStudent = new TestListStudent();
+
+			testListStudent.setSubjectName(rSet.getString("NAME"));
+			testListStudent.setSubjectCd(rSet.getString("SUBJECT_CD"));
+			testListStudent.setNo(rSet.getInt("NO"));
+			testListStudent.setPoint(rSet.getInt("POINT"));
 			
 			list.add(testListStudent);
 			

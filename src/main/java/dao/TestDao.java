@@ -123,6 +123,8 @@ public class TestDao extends Dao {
 			statement.setString(4, subject.getCd());
 			statement.setInt(5, no);
 			
+			System.out.println(statement);
+			
 			rSet = statement.executeQuery();
 			
 			list = postFilter(rSet, school);

@@ -12,6 +12,7 @@ import bean.School;
 import bean.Subject;
 import bean.Teacher;
 import bean.TestListSubject;
+import dao.ClassNumDao;
 import dao.SubjectDao;
 import dao.TestListSubjectDao;
 import tool.Action;
@@ -31,6 +32,7 @@ public class TestListSubjectExecuteAction extends Action {
 		int entYear = 0;
 		LocalDate todaysDate = LocalDate.now();
 		int year = todaysDate.getYear();
+		ClassNumDao cNumDao = new ClassNumDao();
 		
 		entYearStr = req.getParameter("f1");
 		classNum = req.getParameter("f2");
@@ -42,6 +44,8 @@ public class TestListSubjectExecuteAction extends Action {
 		School school = teacher.getSchool();
 
         Subject subject = subDao.get(subjectCd, school);
+        
+        List<String> Clist = cNumDao.filter(teacher.getSchool());
         
         TestListSubjectDao dao = new TestListSubjectDao();
         
@@ -59,9 +63,10 @@ public class TestListSubjectExecuteAction extends Action {
         
         req.setAttribute("list", list);
         req.setAttribute("subjects", subjects);
-		req.setAttribute("class_num_set", classNum);
+		req.setAttribute("class_num_set", Clist);
 		req.setAttribute("ent_year_set", entYearSet);
         
         req.getRequestDispatcher("/main/test_list_subject.jsp").forward(req, res);
+        req.getRequestDispatcher("/main/test_list_student.jsp").forward(req, res);
 	}
 }

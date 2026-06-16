@@ -9,7 +9,7 @@ public class TestListStudent implements Serializable {
 	
 	private String subjectCd;
 	
-	private int num;
+	private int no;
 	
 	private int point;
 	
@@ -29,12 +29,12 @@ public class TestListStudent implements Serializable {
 		this.subjectCd = subjectCd;
 	}
 	
-	public int getNum() {
-		return num;
+	public int getNo() {
+		return no;
 	}
 	
-	public void setNum(int num) {
-		this.num = num;
+	public void setNo(int no) {
+		this.no =no;
 	}
 	
 	public int getPoint() {

@@ -22,7 +22,7 @@
 
             <!-- 検索フォーム -->
             <form class="manage-search-form"
-                  action=""
+                  action="TestRegist.action"
                   method="get">
 
                 <div class="form-group">
@@ -107,8 +107,6 @@
 
                     <select name="f4">
 
-                        <option value="">--------</option>
-
                         <option value="1">1回</option>
 
                         <option value="2">2回</option>
@@ -128,10 +126,13 @@
             </form>
 
             <!-- 一覧 -->
+            list = ${list}
+			<br>
+			件数 = ${list.size()}
             <c:if test="${not empty list}">
 
                 <form class="score-register-form"
-                      action=""
+                      action="TestRegistExecute.action"
                       method="post">
 
                     <div class="result-title">
@@ -154,13 +155,13 @@
 
                             <tr>
 
-                                <td>${test.entYear}</td>
+                                <td>${test.student.entYear}</td>
 
-                                <td>${test.classNum}</td>
+                                <td>${test.student.classNum}</td>
 
-                                <td>${test.no}</td>
+                                <td>${test.student.no}</td>
 
-                                <td>${test.name}</td>
+                                <td>${test.student.name}</td>
 
                                 <td>
 
@@ -188,7 +189,7 @@
 
                 </form>
 
-            </c:if>
+           </c:if>
 
         </div>
 

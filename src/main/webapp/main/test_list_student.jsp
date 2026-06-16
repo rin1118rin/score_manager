@@ -89,7 +89,7 @@
 			                        <tr>
 			                            <td>${s.subjectName}</td>
 			                            <td>${s.subjectCd}</td>
-			                            <td>${s.num}</td>
+			                            <td>${s.no}</td>
 			                            <td>${s.point}</td>
 			                        </tr>
 			                    </c:forEach>

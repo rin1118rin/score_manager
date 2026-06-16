@@ -58,16 +58,20 @@ public class TestRegistAction extends Action {
 		}
 	
 		List<Subject> subjects = subDao.filter(teacher.getSchool());
-		List<String> list = cNumDao.filter(teacher.getSchool());
+		List<String> lists = cNumDao.filter(teacher.getSchool());
 		Subject sub = null;
 		if (subject != null && !subject.equals("0")) {
 		    sub = subDao.get(subject, teacher.getSchool());
 		}
+		
+		System.out.println("sub = " + sub);
 
-		List<Test> tests = new ArrayList<>();
+		List<Test> list = new ArrayList<>();
 		if (sub != null) {
-			tests = tDao.filter(entYear, classNum, sub, no, teacher.getSchool());
+			list = tDao.filter(entYear, classNum, sub, no, teacher.getSchool());
 		}
+		
+		System.out.println("list size = " + list.size());
 
 		
 		req.setAttribute("f1", entYear);
@@ -75,8 +79,9 @@ public class TestRegistAction extends Action {
 		req.setAttribute("f3", subject);
 		req.setAttribute("f4", no);
 		req.setAttribute("subjects", subjects);
-		req.setAttribute("class_num_set", list);
+		req.setAttribute("class_num_set", lists);
 		req.setAttribute("ent_year_set", entYearSet);
+		req.setAttribute("list", list);
 		
 		req.getRequestDispatcher("/main/test_regist.jsp").forward(req, res);
 	}	
