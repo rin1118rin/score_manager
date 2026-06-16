@@ -15,7 +15,7 @@ public class TestListSubject {
 	
 	private Map<Integer, Integer> points;
 	
-	public int getEntyear() {
+	public int getEntYear() {
 		return entYear;
 	}
 	

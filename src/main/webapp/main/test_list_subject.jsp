@@ -128,8 +128,8 @@
 		                            <td>${s.classNum}</td>
 		                            <td>${s.studentNo}</td>
 		                            <td>${s.studentName}</td>
-		                            <td>${s.point(1)}</td>
-		                            <td>${s.point(2)}</td>
+		                            <td>${s.points[1]}</td>
+		                            <td>${s.points[2]}</td>
 		                        </tr>
 		                    </c:forEach>
 		

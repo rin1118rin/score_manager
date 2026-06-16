@@ -54,11 +54,12 @@ public class TestListSubjectExecuteAction extends Action {
 			entYearSet.add(i);
 		}
         
+		List<Subject> subjects = subDao.filter(teacher.getSchool());
         List<TestListSubject> list = dao.filter(entYear, classNum, subject, school);
         
         req.setAttribute("list", list);
-        req.setAttribute("subject", subject);
-		req.setAttribute("class_num_set", list);
+        req.setAttribute("subjects", subjects);
+		req.setAttribute("class_num_set", classNum);
 		req.setAttribute("ent_year_set", entYearSet);
         
         req.getRequestDispatcher("/main/test_list_subject.jsp").forward(req, res);
