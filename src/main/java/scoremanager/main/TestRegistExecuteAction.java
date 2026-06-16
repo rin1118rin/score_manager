@@ -54,7 +54,8 @@ public class TestRegistExecuteAction extends Action {
 			entYearSet.add(i);
 		}
 		
-		List<Subject> subjects = subDao.filter(teacher.getSchool());
+
+ 		List<Subject> subjects = subDao.filter(teacher.getSchool());
 		List<String> lists = cNumDao.filter(teacher.getSchool());
 		Subject sub = null;
 		if (subject != null && !subject.equals("0")) {
@@ -71,6 +72,7 @@ public class TestRegistExecuteAction extends Action {
 		req.setAttribute("f2", classNum);
 		req.setAttribute("f3", subject);
 		req.setAttribute("f4", no);
+		req.setAttribute("subject1", sub);
 		req.setAttribute("subjects", subjects);
 		req.setAttribute("class_num_set", lists);
 		req.setAttribute("ent_year_set", entYearSet);
