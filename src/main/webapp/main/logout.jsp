@@ -21,7 +21,7 @@
 		        <a href="Login.action"
 		           class="login-button">
 		
-		            ログイン画面へ
+		            ログイン
 		
 		        </a>
 		
