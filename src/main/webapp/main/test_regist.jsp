@@ -14,7 +14,7 @@
 
         <%@ include file="/common/sidebar.jsp" %>
 
-        <div class="main test-regist-page">
+        <div class="page-content">
 
             <h2 class="page-title">
                 成績管理
