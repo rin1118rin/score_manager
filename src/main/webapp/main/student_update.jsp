@@ -31,7 +31,7 @@
 
                     <input type="text"
                            name="ent_year"
-                           value="${student.entYear}"
+                           value="${entYear}"
                            readonly>
 
                 </div>
@@ -43,7 +43,7 @@
 
                     <input type="text"
                            name="no"
-                           value="${student.no}"
+                           value="${no}"
                            readonly>
 
                 </div>

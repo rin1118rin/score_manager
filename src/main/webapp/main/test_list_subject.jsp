@@ -108,7 +108,7 @@
 		            <c:otherwise>
 		
 		                <div class="subject-name">
-		                    科目 : ${param.f3}
+		                    科目 : ${subject}
 		                </div>
 		
 		                <table class="score-table">

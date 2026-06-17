@@ -14,7 +14,7 @@ import dao.ClassNumDao;
 import dao.StudentDao;
 import tool.Action;
 
-public class StudentUpadateExecuteAction extends Action {
+public class StudentUpdateExecuteAction extends Action {
 	public void execute(HttpServletRequest req,HttpServletResponse res) throws Exception {
 		HttpSession session = req.getSession();
 		Teacher teacher = (Teacher)session.getAttribute("user");
@@ -94,10 +94,10 @@ public class StudentUpadateExecuteAction extends Action {
 		
 		student.setClassNum(classNum);
 		
-		student.setAttend(true);
+		student.setAttend(isAttend);
 		
 		sDao.save(student);
 		
-		req.getRequestDispatcher("main/student_update_done.jsp").forward(req, res);
+		req.getRequestDispatcher("/main/student_update_done.jsp").forward(req, res);
 	}
 }

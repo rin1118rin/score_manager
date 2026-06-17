@@ -97,7 +97,6 @@ public class TestRegistExecuteAction extends Action {
 			
 			saveList.add(test);
 		}
-		System.out.println("saveList size = " + saveList.size());
 		
 		tDao.save(saveList);
 		req.getRequestDispatcher("/main/test_regist_done.jsp").forward(req, res);

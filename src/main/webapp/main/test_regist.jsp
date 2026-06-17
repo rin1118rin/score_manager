@@ -126,19 +126,13 @@
             </form>
 
             <!-- 一覧 -->
-            list = ${list}
-			<br>
-			件数 = ${list.size()}
+
             <c:if test="${not empty list}">
 
                 <form class="score-register-form"
                       action="TestRegistExecute.action"
                       method="post">
                       
-                    <input type="hidden" name="f1" value="${f1}">
-    				<input type="hidden" name="f2" value="${f2}">
-    				<input type="hidden" name="f3" value="${f3}">
-    				<input type="hidden" name="f4" value="${f4}">
 
                     <div class="result-title">
                         科目 : ${param.f3}

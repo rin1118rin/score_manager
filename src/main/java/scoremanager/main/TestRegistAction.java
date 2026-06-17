@@ -64,14 +64,13 @@ public class TestRegistAction extends Action {
 		    sub = subDao.get(subject, teacher.getSchool());
 		}
 		
-		System.out.println("sub = " + sub);
 
 		List<Test> list = new ArrayList<>();
 		if (sub != null) {
 			list = tDao.filter(entYear, classNum, sub, no, teacher.getSchool());
 		}
 		
-		System.out.println("list size = " + list.size());
+		
 
 		
 		req.setAttribute("f1", entYear);

@@ -14,7 +14,7 @@
 			<div class="main">
 				<h2>学生管理</h2>
 				<a href="StudentCreate.action">新規登録</a>
-				<form action="" method="get" class="search-box">
+				<form action="StudentList.action" method="get" class="search-box">
 					<div class="">
 						<label>入学年度</label> <select name="f1">
 							<option value="0">--------</option>
@@ -71,7 +71,7 @@
 												</c:otherwise>
 											</c:choose>
 										</td>
-									<td><a href="StudentUpdate.action">変更</a></td>
+									<td><a href="StudentUpdate.action?no=${student.no }">変更</a></td>
 								</tr>
 							</c:forEach>
 						</table>

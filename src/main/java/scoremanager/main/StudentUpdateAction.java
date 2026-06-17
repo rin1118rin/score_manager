@@ -8,8 +8,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+import bean.Student;
 import bean.Teacher;
 import dao.ClassNumDao;
+import dao.StudentDao;
 import tool.Action;
 
 public class StudentUpdateAction extends Action {
@@ -21,6 +23,12 @@ public class StudentUpdateAction extends Action {
 			res.sendRedirect("Login.action");
 			return;
 		}
+		
+		String entYearStr = "";
+		String no = "";
+		StudentDao sDao = new StudentDao();
+		
+		no = req.getParameter("no");
 		LocalDate today = LocalDate.now();
 		int year = today.getYear();
 
@@ -32,8 +40,12 @@ public class StudentUpdateAction extends Action {
 
 		ClassNumDao cNumDao = new ClassNumDao();
 		List<String> classNumSet = cNumDao.filter(teacher.getSchool());
-
-		req.setAttribute("ent_year_set", entYearSet);
+		Student student = sDao.get(no);
+		
+		System.out.println("sub = " + entYearStr);
+		
+		req.setAttribute("no", student.getNo());
+		req.setAttribute("entYear", student.getEntYear());
 		req.setAttribute("class_num_set", classNumSet);
 
 		req.getRequestDispatcher("/main/student_update.jsp")

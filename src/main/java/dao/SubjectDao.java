@@ -32,6 +32,8 @@ public class SubjectDao extends Dao {
 			if (rSet.next()) {
 				
 				subject.setCd(rSet.getString("cd"));
+				
+				subject.setName(rSet.getString("name"));
 			
 				subject.setSchool(sDao.get(rSet.getString("school_cd")));
 			} else {
@@ -125,9 +127,9 @@ public class SubjectDao extends Dao {
 		        statement.setString(3, subject.getName());
 	    	} else {
 	    		statement = connection.prepareStatement("UPDATE SUBJECT SET NAME=? WHERE SCHOOL_CD=? AND CD=?");
-	    		statement.setString(3, subject.getName());
-	    		statement.setString(1, subject.getSchool().getCd());
-		        statement.setString(2, subject.getCd());
+	    		statement.setString(1, subject.getName());
+	    		statement.setString(2, subject.getSchool().getCd());
+		        statement.setString(3, subject.getCd());
 	    	}
 	    	count = statement.executeUpdate();
 	    } catch (Exception e) {
@@ -172,6 +174,7 @@ public class SubjectDao extends Dao {
 	        statement.setString(2, subject.getCd());
 	        
 	        count = statement.executeUpdate();
+	        System.out.println("削除件数=" + count);
 	    } catch (Exception e) {
 			throw e;
 		} finally {

@@ -63,6 +63,7 @@ public class TestListSubjectExecuteAction extends Action {
         
         req.setAttribute("list", list);
         req.setAttribute("subjects", subjects);
+        req.setAttribute("subject", subject.getName());
 		req.setAttribute("class_num_set", Clist);
 		req.setAttribute("ent_year_set", entYearSet);
         

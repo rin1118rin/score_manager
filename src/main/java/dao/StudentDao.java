@@ -271,7 +271,7 @@ public class StudentDao extends Dao {
 				statement.setBoolean(5, student.isAttend());
 				statement.setString(6, student.getSchool().getCd());
 			} else {
-				statement = connection.prepareStatement("update student set name=?, ent_year=?, class_num=?, is_attend=?, where no=?");
+				statement = connection.prepareStatement("update student set name=?, ent_year=?, class_num=?, is_attend=? where no=?");
 				
 				statement.setString(1, student.getName());
 				statement.setInt(2, student.getEntYear());

@@ -22,7 +22,7 @@
 		          method="post">
 		
 		        <p class="delete-message">
-		            「${subject_name}（${subject_cd}）」を
+		            「(${name})(${cd})」を
 		            削除してもよろしいですか？
 		        </p>
 		
@@ -45,12 +45,12 @@
 		        </div>
 		
 		        <input type="hidden"
-		               name="subject_cd"
-		               value="${subject_cd}">
+		               name="cd"
+		               value="${cd}">
 		
 		        <input type="hidden"
-		               name="subject_name"
-		               value="${subject_name}">
+		               name="name"
+		               value="${name}">
 		
 		    </form>
 		
