@@ -1,5 +1,6 @@
 package scoremanager.main;
 
+import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,12 +29,14 @@ public class TestRegistExecuteAction extends Action {
 		
 		int no = 0;
 		int entYear = 0;
+		String pointS = "";
 		LocalDate todaysDate = LocalDate.now();
 		int year = todaysDate.getYear();
 		ClassNumDao cNumDao = new ClassNumDao();
 		SubjectDao subDao = new SubjectDao();
 		TestDao tDao = new TestDao();
 		StudentDao sDao = new StudentDao();
+		Connection connection = tDao.getConnection();
 		
 		String entYearStr = req.getParameter("f1");
 		String classNum = req.getParameter("f2");
@@ -78,15 +81,26 @@ public class TestRegistExecuteAction extends Action {
 		req.setAttribute("ent_year_set", entYearSet);
 		req.setAttribute("list", list);
 		
-		Test test = new Test();
+		List<Test> saveList = new ArrayList<>();
+		System.out.println("f1=" + req.getParameter("f1"));
+		System.out.println("f2=" + req.getParameter("f2"));
+		System.out.println("f3=" + req.getParameter("f3"));
+		System.out.println("f4=" + req.getParameter("f4"));
 		
-		test.setClassNum(classNum);
+		for (Test test: list) {
+			pointS = req.getParameter("point_" + test.getStudent().getNo());
+			
+			if (pointS != null && !pointS.isEmpty()) {
+				test.setPoint(Integer.parseInt(pointS));
+				
+			}
+			
+			saveList.add(test);
+		}
+		System.out.println("saveList size = " + saveList.size());
 		
-		
-		
-		test.setSubject(sub);
-		
-		test.setNo(no);
+		tDao.save(saveList);
+		req.getRequestDispatcher("/main/test_regist_done.jsp").forward(req, res);
 		
 	}
 }

@@ -192,7 +192,7 @@ public class TestDao extends Dao {
 			
 			if (old == null) {
 				statement = connection.prepareStatement("INSERT INTO TEST (STUDENT_NO, SUBJECT_CD, SCHOOL_CD, NO, POINT, CLASS_NUM) VALUES (?, ?, ?, ?, ?, ?)");
-				
+				System.out.println("INSERT");
 				statement.setString(1, test.getStudent().getNo());
 	            statement.setString(2, test.getSubject().getCd());
 	            statement.setString(3, test.getSchool().getCd());
@@ -201,7 +201,7 @@ public class TestDao extends Dao {
 	            statement.setString(6, test.getClassNum());
 			} else {
 				statement = connection.prepareStatement("UPDATE TEST SET POINT=? WHERE STUDENT_NO=? AND SUBJECT_CD=? AND SCHOOL_CD=? AND NO=?");
-				
+				System.out.println("UPDATE");
 				statement.setInt(1, test.getPoint());
 	            statement.setString(2, test.getStudent().getNo());
 	            statement.setString(3, test.getSubject().getCd());
@@ -209,6 +209,12 @@ public class TestDao extends Dao {
 	            statement.setInt(5, test.getNo());
 			}
 			count = statement.executeUpdate();
+			System.out.println("student=" + test.getStudent().getNo());
+			System.out.println("subject=" + test.getSubject().getCd());
+			System.out.println("school=" + test.getSchool().getCd());
+			System.out.println("no=" + test.getNo());
+			System.out.println("point=" + test.getPoint());
+			System.out.println("更新件数=" + count);
 		} catch (Exception e) {
 			throw e;
 		} finally {

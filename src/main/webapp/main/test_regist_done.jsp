@@ -21,14 +21,14 @@
 		
 		        <div class="complete-button-area">
 		
-		            <a href=""
+		            <a href="TestRegist.action"
 		               class="sub-button">
 		
 		                戻る
 		
 		            </a>
 		
-		            <a href=""
+		            <a href="TestList.action"
 		               class="main-button">
 		
 		                成績参照
