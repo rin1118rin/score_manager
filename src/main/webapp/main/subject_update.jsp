@@ -8,6 +8,7 @@
 <html>
 
 <head>
+	<title>得点管理システム</title>
     <%@ include file="/common/head.jsp" %>
 </head>
 
