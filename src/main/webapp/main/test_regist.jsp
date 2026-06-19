@@ -136,7 +136,7 @@
                       
 
                     <div class="result-title">
-                        科目 : ${param.f3}
+                        科目 : ${subject}
                         第${param.f4}回
                     </div>
 

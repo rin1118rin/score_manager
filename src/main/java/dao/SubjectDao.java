@@ -174,7 +174,7 @@ public class SubjectDao extends Dao {
 	        statement.setString(2, subject.getCd());
 	        
 	        count = statement.executeUpdate();
-	        System.out.println("削除件数=" + count);
+
 	    } catch (Exception e) {
 			throw e;
 		} finally {

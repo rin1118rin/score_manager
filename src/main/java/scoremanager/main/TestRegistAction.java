@@ -2,14 +2,13 @@ package scoremanager.main;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+import bean.School;
 import bean.Subject;
 import bean.Teacher;
 import bean.Test;
@@ -35,7 +34,6 @@ public class TestRegistAction extends Action {
 		int year = todaysDate.getYear();
 		StudentDao sDao = new StudentDao();
 		ClassNumDao cNumDao = new ClassNumDao();
-		Map<String, String> errors = new HashMap<>();
 		SubjectDao subDao = new SubjectDao();
 		TestDao tDao = new TestDao();
 		
@@ -43,6 +41,7 @@ public class TestRegistAction extends Action {
 		String classNum = req.getParameter("f2");
 		String subject = req.getParameter("f3");
 		String nums = req.getParameter("f4");
+		
 		
 		if (entYearStr != null && !entYearStr.isEmpty()) {
 		    entYear = Integer.parseInt(entYearStr);
@@ -56,12 +55,16 @@ public class TestRegistAction extends Action {
 		for (int i = year - 10; i < year + 1; i++) {
 			entYearSet.add(i);
 		}
-	
+		
+		School school = teacher.getSchool();
+		
+		Subject sub = subDao.get(subject, school);
 		List<Subject> subjects = subDao.filter(teacher.getSchool());
 		List<String> lists = cNumDao.filter(teacher.getSchool());
-		Subject sub = null;
+		
 		if (subject != null && !subject.equals("0")) {
 		    sub = subDao.get(subject, teacher.getSchool());
+		    req.setAttribute("subject", sub.getName());
 		}
 		
 
@@ -70,8 +73,6 @@ public class TestRegistAction extends Action {
 			list = tDao.filter(entYear, classNum, sub, no, teacher.getSchool());
 		}
 		
-		
-
 		
 		req.setAttribute("f1", entYear);
 		req.setAttribute("f2", classNum);
