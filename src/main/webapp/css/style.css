@@ -545,7 +545,7 @@ td a {
 }
 
 /* input / select */
-
+.subject-form input,
 .student-form input,
 .student-form select {
     width: 100%;
@@ -566,7 +566,7 @@ td a {
 }
 
 /* focus */
-
+.subject-form input:focus,
 .student-form input:focus,
 .student-form select:focus {
     outline: none;
@@ -578,7 +578,7 @@ td a {
 }
 
 /* placeholder */
-
+.subject-form input::placeholder,
 .student-form input::placeholder {
     color: #999;
 }
@@ -611,24 +611,6 @@ td a {
 
 .button-area button:hover {
     opacity: .85;
-}
-
-/* 戻るリンク */
-
-.back-link {
-    display: inline-block;
-
-    margin-top: 25px;
-
-    color: #111;
-
-    text-decoration: none;
-
-    border-bottom: 1px solid #111;
-}
-
-.back-link:hover {
-    opacity: .7;
 }
 
 /* エラー */
@@ -2063,17 +2045,7 @@ td a {
 /* 戻るリンク */
 
 .subject-form .back-link {
-    display: inline-block;
-
     margin-top: 25px;
-
-    color: #111;
-
-    text-decoration: none;
-
-    border-bottom: 1px solid #111;
-
-    transition: .2s;
 }
 
 .subject-form .back-link:hover {

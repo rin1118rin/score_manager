@@ -45,46 +45,27 @@
             <!-- 学生番号 -->
             <div class="form-group">
                 <label>学生番号</label>
-
-                <input
-                    type="text"
-                    name="no"
-                    value="${no}"
-                    maxlength="30"
-                    required
-                    placeholder="学生番号を入力してください"
-                >
+                <input type="text" name="no" value="${no}" maxlength="30"
+                    required placeholder="学生番号を入力してください">
             </div>
 
             <!-- 氏名 -->
             <div class="form-group">
                 <label>氏名</label>
-
-                <input
-                    type="text"
-                    name="name"
-                    value="${name}"
-                    maxlength="30"
-                    required
-                    placeholder="氏名を入力してください"
-                >
+                <input type="text" name="name" value="${name}" maxlength="30"
+                    required placeholder="氏名を入力してください">
             </div>
 
             <!-- クラス -->
             <div class="form-group">
                 <label>クラス</label>
-
                 <select name="class_num">
-
                     <c:forEach var="classNum"
                                items="${class_num_set}">
-
                         <option value="${classNum}">
                             ${classNum}
                         </option>
-
                     </c:forEach>
-
                 </select>
             </div>
 
@@ -94,18 +75,9 @@
                     登録して終了
                 </button>
             </div>
-
-            <a class="back-link"
-               href="StudentList.action">
-
-                戻る
-
-            </a>
-
+            <a class="back-link" href="StudentList.action">戻る</a>
         </form>
-
     </main>
-
 </div>
 
 <%@ include file="/common/footer.jsp" %>

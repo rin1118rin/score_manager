@@ -17,7 +17,7 @@
 		        <h2>成績管理</h2>
 		
 		        <p class="complete-message">
-		            変更が完了しました
+		            登録が完了しました
 		        </p>
 		
 		        <div class="complete-button-area">
