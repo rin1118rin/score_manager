@@ -32,6 +32,7 @@
 			            <div class="form-group">
 			                <label>クラス</label>
 			                <select name="f2">
+			                	<option value="0">--------</option>
 			                    <c:forEach var="num" items="${class_num_set }">
 			                        <option value="${num }"
 			                            <c:if test="${num==f2 }">selected</c:if>>

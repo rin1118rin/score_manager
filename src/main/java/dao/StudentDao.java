@@ -156,14 +156,14 @@ public class StudentDao extends Dao {
 		
 		ResultSet rSet = null;
 		
-		String condition = "and ent_year=?";
+		String condition = " and ent_year=?";
 		
-		String order = "order by no asc";
+		String order = " order by no asc";
 		
 		String conditionIsAttend = "";
 		
 		if (isAttend) {
-			conditionIsAttend = "and is_attend=true";
+			conditionIsAttend = " and is_attend=true";
 		}
 		
 		try {

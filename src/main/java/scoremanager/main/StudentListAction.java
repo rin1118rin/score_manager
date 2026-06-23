@@ -79,8 +79,9 @@ public class StudentListAction extends Action {
 			request.setAttribute("ent_year_set", entYearSet);
 			
 			request.getRequestDispatcher("/main/student_list.jsp").forward(request, response);
-		} catch (Exception errors) {
-			request.setAttribute("errors", errors);
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}
 	}
 	
