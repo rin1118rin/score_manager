@@ -39,6 +39,8 @@ public class TestListSubjectExecuteAction extends Action {
 		subjectCd = req.getParameter("f3");
 		no = req.getParameter("f4");
 		
+
+		
 		SubjectDao subDao = new SubjectDao();
 		
 		School school = teacher.getSchool();
@@ -68,6 +70,5 @@ public class TestListSubjectExecuteAction extends Action {
 		req.setAttribute("ent_year_set", entYearSet);
         
         req.getRequestDispatcher("/main/test_list_subject.jsp").forward(req, res);
-        req.getRequestDispatcher("/main/test_list_student.jsp").forward(req, res);
 	}
 }

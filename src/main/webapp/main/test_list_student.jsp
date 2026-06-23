@@ -44,7 +44,7 @@
 			            <div class="form-group">
 			                <label>科目</label>
 			                <select name="f3">
-			                    <option value="0">--------</option>
+			                    <option value="" selected disabled>--------</option>
 			                    <c:forEach var="subject"
 			                               items="${subjects }">
 			                        <option value="${subject.cd }"
