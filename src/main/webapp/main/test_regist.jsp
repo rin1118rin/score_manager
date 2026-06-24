@@ -127,7 +127,7 @@
                         検索
                     </button>
                     <c:if test="${not empty errors.f1}">
-    					<p class="error">${errors}</p>
+    					<p class="error">${errors.f1}</p>
 					</c:if>
 
                 </div>
