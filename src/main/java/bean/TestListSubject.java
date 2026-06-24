@@ -13,7 +13,7 @@ public class TestListSubject {
 	
 	private String classNum;
 	
-	private Map<Integer, Integer> points;
+	private Map<Integer, Integer> points = new HashMap<>();
 	
 	public int getEntYear() {
 		return entYear;
@@ -72,5 +72,13 @@ public class TestListSubject {
 		}
 		
 		points.put(key, value);
+	}
+	
+	public String getPoint1() {
+	    return getPoint(1);
+	}
+
+	public String getPoint2() {
+	    return getPoint(2);
 	}
 }

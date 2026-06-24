@@ -126,6 +126,32 @@ public class TestDao extends Dao {
 			rSet = statement.executeQuery();
 			
 			list = postFilter(rSet, school);
+			
+			StudentDao sDao = new StudentDao();
+            List<Student> students = sDao.filter(school, entYear, classNum, true);
+ 
+            for (Student stu : students) {
+                boolean exists = false;
+ 
+                for (Test t : list) {
+                    if (t.getStudent().getNo().equals(stu.getNo())) {
+                        exists = true;
+                        break;
+                    }
+                }
+ 
+                if (!exists) {
+                    Test test = new Test();
+                    test.setStudent(stu);
+                    test.setSubject(subject);
+                    test.setSchool(school);
+                    test.setNo(no);
+                    test.setPoint(0);
+                    test.setClassNum(classNum);
+ 
+                    list.add(test);
+                }
+            }
 		} catch (Exception e) {
 			throw e;
 		} finally {

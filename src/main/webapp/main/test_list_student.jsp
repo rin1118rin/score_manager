@@ -20,7 +20,7 @@
 			            <div class="form-group">
 			                <label>入学年度</label>
 			                <select name="f1">
-			                    <option value="0">--------</option>
+			                    <option value="" selected disabled>--------</option>
 			                    <c:forEach var="year" items="${ent_year_set }">
 			                        <option value="${year }"
 			                            <c:if test="${year==f1 }">selected</c:if>>
@@ -32,7 +32,7 @@
 			            <div class="form-group">
 			                <label>クラス</label>
 			                <select name="f2">
-			                	<option value="0">--------</option>
+			                	<option value="" selected disabled>--------</option>
 			                    <c:forEach var="num" items="${class_num_set }">
 			                        <option value="${num }"
 			                            <c:if test="${num==f2 }">selected</c:if>>

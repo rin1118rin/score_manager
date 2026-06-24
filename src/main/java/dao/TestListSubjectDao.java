@@ -19,15 +19,50 @@ public class TestListSubjectDao extends Dao {
 		
 		while (rSet.next()) {
 			
-			TestListSubject testListSubject = new TestListSubject();
-			
-			testListSubject.setEntYear(rSet.getInt("ENT_YEAR"));
-			testListSubject.setStudentNo(rSet.getString("NO"));
-			testListSubject.setStudentName(rSet.getString("NAME"));
-			testListSubject.setClassNum(rSet.getString("CLASS_NUM"));
-			testListSubject.putPoint(rSet.getInt("no"), rSet.getInt("point"));
-			
-			list.add(testListSubject);
+			 String studentNo = rSet.getString("NO");
+
+		        TestListSubject testListSubject = null;
+
+		        for (TestListSubject t : list) {
+		            if (t.getStudentNo().equals(studentNo)) {
+		                testListSubject = t;
+		                break;
+		            }
+		        }
+		        if (testListSubject == null) {
+
+		            testListSubject = new TestListSubject();
+
+		            testListSubject.setEntYear(
+		                rSet.getInt("ENT_YEAR")
+		            );
+
+		            testListSubject.setStudentNo(studentNo);
+
+		            testListSubject.setStudentName(
+		                rSet.getString("NAME")
+		            );
+
+		            testListSubject.setClassNum(
+		                rSet.getString("CLASS_NUM")
+		            );
+
+		            list.add(testListSubject);
+		        }
+
+		        int testNo = rSet.getInt("TEST_NO");
+
+		        if (!rSet.wasNull()) {
+		            testListSubject.putPoint(
+		                testNo,
+		                rSet.getInt("POINT")
+		            );
+		        }
+		        for (TestListSubject t : list) {
+		            System.out.println(
+		                t.getStudentNo() + " => " + t.getPoints()
+		            );
+		        }
 		}
 		return list;
 	}

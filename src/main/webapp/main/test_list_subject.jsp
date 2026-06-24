@@ -27,7 +27,7 @@
 		                <label>入学年度</label>
 		
 		                <select name="f1" >
-		                    <option value="0">--------</option>
+		                    <option value="" selected disabled>--------</option>
 		
 		                    <c:forEach var="year" items="${ent_year_set}">
 		                        <option value="${year}"
@@ -42,7 +42,7 @@
 		                <label>クラス</label>
 		
 		                <select name="f2" >
-		                	<option value="0">--------</option>
+		                	<option value="" selected disabled>--------</option>
 		                    <c:forEach var="num" items="${class_num_set}">
 		                        <option value="${num}"
 		                            <c:if test="${num==f2}">selected</c:if>>
@@ -130,8 +130,8 @@
 		                            <td>${s.classNum}</td>
 		                            <td>${s.studentNo}</td>
 		                            <td>${s.studentName}</td>
-		                            <td>${s.points[1]}</td>
-		                            <td>${s.points[2]}</td>
+		                            <td>${s.point1}</td>
+		                            <td>${s.point2}</td>
 		                        </tr>
 		                    </c:forEach>
 		

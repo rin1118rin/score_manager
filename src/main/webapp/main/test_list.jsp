@@ -21,7 +21,7 @@
 			            <div class="form-group">
 			                <label>入学年度</label>
 			                <select name="f1" required>
-			                    <option value="0">--------</option>
+			                    <option value="" selected disabled>--------</option>
 			                    <c:forEach var="year"
 			                               items="${ent_year_set }">
 			                        <option value="${year }"
@@ -34,7 +34,7 @@
 			            <div class="form-group">
 			                <label>クラス</label>
 			                <select name="f2" required>
-			                	<option value="0">--------</option>
+			                	<option value="" selected disabled>--------</option>
 			                    <c:forEach var="num"
 			                               items="${class_num_set }">
 			                        <option value="${num }"

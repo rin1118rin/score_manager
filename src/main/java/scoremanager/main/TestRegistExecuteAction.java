@@ -1,25 +1,21 @@
 package scoremanager.main;
 
-import java.sql.Connection;
-import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-import bean.School;
-import bean.Subject;
 import bean.Teacher;
 import bean.Test;
-import dao.ClassNumDao;
-import dao.StudentDao;
-import dao.SubjectDao;
 import dao.TestDao;
 import tool.Action;
 
 public class TestRegistExecuteAction extends Action {
+	@SuppressWarnings("unchecked")
+	@Override
 	public void execute(HttpServletRequest req,HttpServletResponse res) throws Exception {
 		HttpSession session = req.getSession();
 		Teacher teacher = (Teacher)session.getAttribute("user");
@@ -28,80 +24,52 @@ public class TestRegistExecuteAction extends Action {
 			return;
 		}
 		
-		int no = 0;
-		int entYear = 0;
-		String pointS = "";
-		LocalDate todaysDate = LocalDate.now();
-		int year = todaysDate.getYear();
-		ClassNumDao cNumDao = new ClassNumDao();
-		SubjectDao subDao = new SubjectDao();
 		TestDao tDao = new TestDao();
-		StudentDao sDao = new StudentDao();
-		Connection connection = tDao.getConnection();
-		
-		String entYearStr = req.getParameter("f1");
-		String classNum = req.getParameter("f2");
-		String subject = req.getParameter("f3");
-		String nums = req.getParameter("f4");
-
-		
-		if (entYearStr != null) {
-			entYear = Integer.parseInt(entYearStr);
-		}
-		
-		if (nums != null && !nums.isEmpty()) {
-		    no = Integer.parseInt(nums);
-		}
-        
-        List<Integer> entYearSet = new ArrayList<>();
-		for (int i = year - 10; i < year + 1; i++) {
-			entYearSet.add(i);
-		}
-		
-
- 		List<Subject> subjects = subDao.filter(teacher.getSchool());
-		List<String> lists = cNumDao.filter(teacher.getSchool());
-		
-		School school = teacher.getSchool();
-		
-		Subject sub = subDao.get(subject, school);
-		
-		if (subject != null && !subject.equals("0")) {
-		    sub = subDao.get(subject, teacher.getSchool());
-		}
-		System.out.println("sub = " + sub);
-
-		List<Test> list = new ArrayList<>();
-		if (sub != null) {
-			list = tDao.filter(entYear, classNum, sub, no, teacher.getSchool());
-		}
-		
-		req.setAttribute("f1", entYear);
-		req.setAttribute("f2", classNum);
-		req.setAttribute("f3", subject);
-		req.setAttribute("f4", no);
-		req.setAttribute("subject", sub.getName());
-		req.setAttribute("subjects", subjects);
-		req.setAttribute("class_num_set", lists);
-		req.setAttribute("ent_year_set", entYearSet);
-		req.setAttribute("list", list);
-		
-		List<Test> saveList = new ArrayList<>();
-
-		
-		for (Test test: list) {
-			pointS = req.getParameter("point_" + test.getStudent().getNo());
-			
-			if (pointS != null && !pointS.isEmpty()) {
-				test.setPoint(Integer.parseInt(pointS));
-				
-			}
-			
-			saveList.add(test);
-		}
-		
-		tDao.save(saveList);
-		req.getRequestDispatcher("/main/test_regist_done.jsp").forward(req, res);
-		
+        List<Test> tests = (List<Test>) session.getAttribute("tests");
+ 
+        if (tests == null || tests.isEmpty()) {
+            res.sendRedirect("TestRegist.action");
+            return;
+        }
+ 
+        Map<String, String> errors = new HashMap<>();
+ 
+        for (Test test : tests) {
+            String studentNo = test.getStudent().getNo();
+            String pointStr = req.getParameter("point_" + studentNo);
+            if (pointStr == null || pointStr.isEmpty()) {
+            	errors.put(studentNo, "数値を入力してください");
+            }
+            if (pointStr != null && !pointStr.equals("")) {
+                try {
+                    int point = Integer.parseInt(pointStr);
+ 
+                    if (point >= 0 && point <= 100) {
+                        test.setPoint(point);
+                    } else {
+                        errors.put(studentNo, "0～100の範囲で入力してください");
+                    }
+ 
+                } catch (NumberFormatException e) {
+                    errors.put(studentNo, "数値を入力してください");
+                }
+            }
+        }
+ 
+        // ★ エラーがある場合
+        if (!errors.isEmpty()) {
+    		req.setAttribute("tests", tests);
+            req.setAttribute("errors", errors);
+            req.getRequestDispatcher("/main/test_regist.jsp")
+                   .forward(req, res);
+            return;
+        }
+ 
+        // ★ 正常時
+        tDao.save(tests);
+        session.removeAttribute("tests");
+ 
+        req.getRequestDispatcher("/main/test_regist_done.jsp")
+               .forward(req, res);
 	}
 }

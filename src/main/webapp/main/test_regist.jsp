@@ -25,7 +25,9 @@
             <form class="manage-search-form"
                   action="TestRegist.action"
                   method="get">
-
+                  
+               <input type="hidden" name="mode" value="search">
+                  
                 <div class="form-group">
 
                     <label>入学年度</label>
@@ -86,15 +88,15 @@
 
                         <option value="0">--------</option>
 
-                        <c:forEach var="subject"
+                        <c:forEach var="subjects"
                                    items="${subjects}">
 
-                            <option value="${subject.cd}"
-                                <c:if test="${subject.cd==f3}">
+                            <option value="${subjects.cd}"
+                                <c:if test="${subjects.cd==f3}">
                                     selected
                                 </c:if>>
 
-                                ${subject.name}
+                                ${subjects.name}
 
                             </option>
 
@@ -109,14 +111,13 @@
                     <label>回数</label>
 
                     <select name="f4">
-                    
-                    	<option value="0">--------</option>
-
-                        <option value="1">1回</option>
-
-                        <option value="2">2回</option>
-
-                    </select>
+        				<option value="0">--------</option>
+        					<c:forEach var="no" items="${num}">
+            					<option value="${no}" <c:if test="${no==f4}">selected</c:if>>
+                					${no}
+           	 					</option>
+        				</c:forEach>
+    				</select>
 
                 </div>
 
@@ -132,11 +133,13 @@
 
             <!-- 一覧 -->
 
-            <c:if test="${not empty list}">
+            <c:if test="${not empty tests}">
 
                 <form class="score-register-form"
                       action="TestRegistExecute.action"
                       method="post">
+                     
+                    
                       
 
                     <div class="result-title">
@@ -155,7 +158,7 @@
                         </tr>
 
                         <c:forEach var="test"
-                                   items="${list}">
+                                   items="${tests}">
 
                             <tr>
 
