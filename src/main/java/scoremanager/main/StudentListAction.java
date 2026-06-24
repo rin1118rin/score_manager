@@ -66,7 +66,8 @@ public class StudentListAction extends Action {
 			} else if (entYear ==0 && classNum == null || entYear == 0 && classNum.equals("0")) {
 				students = sDao.filter(teacher.getSchool(), isAttend);
 			} else {
-				errors.put("f1", "クラスを指定する場合は入学年度も指定してください");
+				errors.put("f2", "クラスを指定する場合は入学年度も指定してください");
+				System.out.println(errors);
 				request.setAttribute("errors", errors);
 				students = sDao.filter(teacher.getSchool(), isAttend);
 			}

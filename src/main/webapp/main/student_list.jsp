@@ -40,6 +40,9 @@
 					<div class="">
 						<button type="submit">絞込み</button>
 					</div>
+					<c:if test="${not empty errors.f2}">
+    					<p class="error">${errors.f2}</p>
+					</c:if>
 				</form>
 				<c:choose>
 					<c:when test="${empty students}">
