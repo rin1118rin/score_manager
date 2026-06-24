@@ -27,7 +27,7 @@
 		                <label>入学年度</label>
 		
 		                <select name="f1" >
-		                    <option value="" selected disabled>--------</option>
+		                    <option value="0" >--------</option>
 		
 		                    <c:forEach var="year" items="${ent_year_set}">
 		                        <option value="${year}"
@@ -42,7 +42,7 @@
 		                <label>クラス</label>
 		
 		                <select name="f2" >
-		                	<option value="" selected disabled>--------</option>
+		                	<option value="0" >--------</option>
 		                    <c:forEach var="num" items="${class_num_set}">
 		                        <option value="${num}"
 		                            <c:if test="${num==f2}">selected</c:if>>
@@ -56,7 +56,7 @@
 		                <label>科目</label>
 		
 		                <select name="f3" >
-		                    <option value="" selected disabled>--------</option>
+		                    <option value="0" >--------</option>
 		
 		                    <c:forEach var="subject" items="${subjects}">
 		                        <option value="${subject.cd}"
@@ -66,8 +66,11 @@
 		                    </c:forEach>
 		                </select>
 		            </div>
-		
+
 		            <button type="submit">検索</button>
+		            <c:if test="${not empty errors.f1}">
+    					<p class="error">${errors.f1}</p>
+					</c:if>
 		
 		            <input type="hidden" name="f" value="sj">
 		        </form>
@@ -93,6 +96,7 @@
 		            <button type="submit">検索</button>
 		
 		            <input type="hidden" name="f" value="st">
+		          
 		        </form>
 		
 		    </div>
@@ -149,3 +153,7 @@
 	<%@ include file="/common/footer.jsp" %>
 </body>
 </html>
+<style>
+p {
+color: #000000;
+}</style>

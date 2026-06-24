@@ -126,6 +126,9 @@
                     <button type="submit">
                         検索
                     </button>
+                    <c:if test="${not empty errors.f1}">
+    					<p class="error">${errors}</p>
+					</c:if>
 
                 </div>
 

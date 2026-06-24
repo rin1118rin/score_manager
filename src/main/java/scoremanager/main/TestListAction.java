@@ -52,6 +52,7 @@ public class TestListAction extends Action {
 		for (int i = year - 10; i < year + 1; i++) {
 			entYearSet.add(i);
 		}
+	
 		
 		List<String> list = cNumDao.filter(teacher.getSchool());
 		

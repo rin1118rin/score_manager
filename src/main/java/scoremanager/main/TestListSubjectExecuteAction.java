@@ -2,7 +2,9 @@ package scoremanager.main;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -33,6 +35,7 @@ public class TestListSubjectExecuteAction extends Action {
 		LocalDate todaysDate = LocalDate.now();
 		int year = todaysDate.getYear();
 		ClassNumDao cNumDao = new ClassNumDao();
+		Map<String,String> errors = new HashMap<>();
 		
 		entYearStr = req.getParameter("f1");
 		classNum = req.getParameter("f2");
@@ -44,8 +47,6 @@ public class TestListSubjectExecuteAction extends Action {
 		SubjectDao subDao = new SubjectDao();
 		
 		School school = teacher.getSchool();
-
-        Subject subject = subDao.get(subjectCd, school);
         
         List<String> Clist = cNumDao.filter(teacher.getSchool());
         
@@ -59,16 +60,34 @@ public class TestListSubjectExecuteAction extends Action {
 		for (int i = year - 10; i < year + 1; i++) {
 			entYearSet.add(i);
 		}
-        
-		List<Subject> subjects = subDao.filter(teacher.getSchool());
-        List<TestListSubject> list = dao.filter(entYear, classNum, subject, school);
-        
-        req.setAttribute("list", list);
-        req.setAttribute("subjects", subjects);
-        req.setAttribute("subject", subject.getName());
-		req.setAttribute("class_num_set", Clist);
-		req.setAttribute("ent_year_set", entYearSet);
-        
-        req.getRequestDispatcher("/main/test_list_subject.jsp").forward(req, res);
+		
+		if (entYear != 0 && !classNum.equals("0") && !subjectCd.equals("0")) {
+			System.out.println("ok");
+			Subject subject = subDao.get(subjectCd, school);
+	        
+			List<Subject> subjects = subDao.filter(teacher.getSchool());
+	        List<TestListSubject> list = dao.filter(entYear, classNum, subject, school);
+	        
+	        req.setAttribute("list", list);
+	        req.setAttribute("subjects", subjects);
+	        req.setAttribute("subject", subject.getName());
+			req.setAttribute("class_num_set", Clist);
+			req.setAttribute("ent_year_set", entYearSet);
+	        
+	        req.getRequestDispatcher("/main/test_list_subject.jsp").forward(req, res);
+		} else {
+			errors.put("f1", "入学年度とクラスと科目を選択してください");
+			List<Subject> subjects = subDao.filter(teacher.getSchool());
+		    req.setAttribute("errors", errors);
+		    
+		    req.setAttribute("f1", entYear);
+		    req.setAttribute("f2", classNum);
+		    req.setAttribute("f3", subjectCd);
+		    
+		    req.setAttribute("subjects", subjects);
+		    req.setAttribute("class_num_set", Clist);
+			req.setAttribute("ent_year_set", entYearSet);
+		    req.getRequestDispatcher("/main/test_list_subject.jsp").forward(req, res);
+		}
 	}
 }

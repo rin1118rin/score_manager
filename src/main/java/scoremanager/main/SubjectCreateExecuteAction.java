@@ -1,7 +1,9 @@
 package scoremanager.main;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -27,9 +29,20 @@ public class SubjectCreateExecuteAction extends Action {
 		SubjectDao subDao = new SubjectDao();
 		School school = teacher.getSchool();
 		Subject subject = new Subject();
+		Map<String, String> errors = new HashMap<>();
 		
 		cd = req.getParameter("cd");
 		name = req.getParameter("name");
+		
+		Subject sub = subDao.get(cd, school);
+		
+		System.out.println(sub);
+		
+		if (sub != null) {
+			errors.put("no", "科目コードが重複しています");
+			req.setAttribute("errors", errors);
+			req.getRequestDispatcher("/main/subject_create.jsp").forward(req, res);
+		}
 		
 		List<Subject> list = new ArrayList<>();
 		

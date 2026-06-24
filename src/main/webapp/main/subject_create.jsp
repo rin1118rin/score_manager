@@ -31,6 +31,9 @@
                 <!-- ボタン -->
                 <div class="button-area">
                     <button type="submit" class="submit-button">登録</button>
+                    <c:if test="${not empty errors.no}">
+    					<p class="error">${errors.no}</p>
+					</c:if>
                 </div>
 
                 <!-- 戻る -->
