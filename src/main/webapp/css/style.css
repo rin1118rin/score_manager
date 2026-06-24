@@ -546,6 +546,7 @@ td a {
 
 /* input / select */
 .subject-form input,
+.subject-update-form input,
 .student-form input,
 .student-form select {
     width: 100%;
@@ -568,6 +569,7 @@ td a {
 /* focus */
 .subject-form input:focus,
 .student-form input:focus,
+.subject-update-form input:focus,
 .student-form select:focus {
     outline: none;
 
@@ -579,6 +581,7 @@ td a {
 
 /* placeholder */
 .subject-form input::placeholder,
+.subject-update-form input::placeholder,
 .student-form input::placeholder {
     color: #999;
 }
